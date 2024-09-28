@@ -3,11 +3,11 @@
 Team A : Market Data , Live & Historic
 
 Team Members : 
-Akaash Thawani - Backend \n
-Jyotiraditya Jyotiraditya - Frontend
-Christine Maynard - DevOps
-Snehal Suresh Nikalje - BA 
-Sindhusha Pasumarthi -Testing
+Akaash Thawani - Backend <br>
+Jyotiraditya Jyotiraditya - Frontend <br>
+Christine Maynard - DevOps <br>
+Snehal Suresh Nikalje - BA <br>
+Sindhusha Pasumarthi -Testing <br>
 
 GitHub Backend : https://github.com/AkaashThawani/uniTrade-team1
 GitHub Frontend : 
@@ -39,9 +39,9 @@ An intuitive user interface with real-time updates on the market and trades.
 
 Stackholders: 
 
-Users,
-,Front Office 
-,Back Office 
+Users <br>
+Front Office <br>
+Back Office <br>
 
 Jira Link : https://njit-cs673-team1.atlassian.net/jira/software/projects/UT/boards/1?atlOrigin=eyJpIjoiNjgyOWU5MDhiNWIwNDFlNTlmMWI0MGI4MGE0OTNkNDAiLCJwIjoiaiJ9
 
