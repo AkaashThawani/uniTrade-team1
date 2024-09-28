@@ -9,6 +9,9 @@ Christine Maynard - DevOps
 Snehal Suresh Nikalje - BA 
 Sindhusha Pasumarthi -Testing
 
+GitHub Backend : https://github.com/AkaashThawani/uniTrade-team1
+GitHub Frontend : 
+
 Far Vision :
 
 In the long run, uniTrade aims to become a comprehensive digital trading platform that allows users to easily access live market data, make secure trades, manage portfolios, and generate insightful analytics. The platform will cater to both experienced traders and beginners by providing a seamless user experience, advanced trading tools, and real-time information. uniTrade will establish itself as a trusted and reliable platform for secure trading across multiple markets, including stocks, cryptocurrencies, and commodities.
