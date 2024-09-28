@@ -3,7 +3,7 @@
 Team A : Market Data , Live & Historic
 
 Team Members : 
-Akaash Thawani - Backend
+Akaash Thawani - Backend \n
 Jyotiraditya Jyotiraditya - Frontend
 Christine Maynard - DevOps
 Snehal Suresh Nikalje - BA 
