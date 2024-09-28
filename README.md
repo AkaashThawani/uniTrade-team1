@@ -39,9 +39,9 @@ An intuitive user interface with real-time updates on the market and trades.
 
 Stackholders: 
 
-Users
-Front Office 
-Back Office 
+Users,
+,Front Office 
+,Back Office 
 
 Jira Link : https://njit-cs673-team1.atlassian.net/jira/software/projects/UT/boards/1?atlOrigin=eyJpIjoiNjgyOWU5MDhiNWIwNDFlNTlmMWI0MGI4MGE0OTNkNDAiLCJwIjoiaiJ9
 
