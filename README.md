@@ -1,6 +1,13 @@
-# trade-match-maintain-api
+# Tem B - Market Order Book, Trade matching
 This microservice provides a stub for a market (or an exchange). This will provide remaining services which are critical for a functioning trading platform.
 
+**Team Members**
+
+Mona Shaban - Business Analyst \
+Srushthi Thakre - UI/UX Developer \
+Revanth Guntupalli - Microservice Developer \
+Niharika Jamble - Database Design \
+Mohammed Hannan Desai - Devops & Testing
 
 **Product Backlog Items as User Stories:**
 *FRONT-END:*
