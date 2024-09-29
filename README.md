@@ -10,7 +10,7 @@ Snehal Suresh Nikalje - BA <br>
 Sindhusha Pasumarthi -Testing <br>
 
 GitHub Backend : https://github.com/AkaashThawani/uniTrade-team1
-GitHub Frontend : 
+GitHub Frontend : https://github.com/SDPM-CS673/electronic-trading-system-app
 
 Far Vision :
 
