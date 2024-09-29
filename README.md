@@ -1,13 +1,19 @@
 # Tem B - Market Order Book, Trade matching
 This microservice provides a stub for a market (or an exchange). This will provide remaining services which are critical for a functioning trading platform.
 
-**Team Members**
+**Team Members** 
+
 
 Mona Shaban - Business Analyst \
 Srushthi Thakre - UI/UX Developer \
 Revanth Guntupalli - Microservice Developer \
 Niharika Jamble - Database Design \
 Mohammed Hannan Desai - Devops & Testing
+
+**Far Vision** 
+
+
+The far vision for the product is to create an efficient trading platform to empower sellers and buyers to interact in the marketplace to buy and sell office commodities. The purpose of this trading system is to provide real time visibility, promote transparency, and control the market dynamics to allow for efficient trade execution. The key components of the vision is to display all of the sell and buy orders that are placed on the platform as well as the market depth that provides live quantities available with the current prices. This will allow the users to make sensible decisions before conducting their trade. Another key component is the trade matching feature which will automatically match the seller and buyers to each other based on the quantity and price desired. This will allow for seamless trade processes without causing discrepancies or delays in the orders. The long term goals of the product are to expand the platform’s global reach to a wider audience in various office supply markets and regions.
 
 **Product Backlog Items as User Stories:**
 *FRONT-END:*
