@@ -10,7 +10,7 @@ Snehal Suresh Nikalje - BA <br>
 Sindhusha Pasumarthi -Testing <br>
 
 GitHub Backend : https://github.com/AkaashThawani/uniTrade-team1
-GitHub Frontend : 
+GitHub Frontend : https://github.com/SDPM-CS673/electronic-trading-system-app
 
 Far Vision :
 
@@ -43,6 +43,39 @@ Users <br>
 Front Office <br>
 Back Office <br>
 
+User Persona: Sarah, the Independent Trader
+Name: Sarah
+Age: 38
+Occupation: Independent Trader
+Location: London, UK
+Background:
+  o Sarah worked in corporate finance for 10 years before transitioning into
+    independent trading.
+  o She holds a degree in Economics from the London School of Economics.
+  o She started trading as a side project, gradually making it her full-time career as she
+    gained confidence in the stock market.
+
+Goals:
+  o Sarah aims to maximize her returns by using real-time market data to make
+    informed trading decisions.
+  o She seeks to utilize historical data for market analysis to predict trends over time.
+  o She is looking for a user-friendly platform that allows quick access to live data and
+    detailed analytics.
+
+Challenges:
+  o Finding reliable, real-time data sources for quick decision-making.
+  o Navigating complex trading platforms with outdated interfaces.
+  o Managing risk while keeping up with fast-moving market changes.
+Motivations:
+  o Sarah is driven by the freedom and flexibility that independent trading provides.
+  o She wants to build a robust investment portfolio while continuing to learn advanced
+    trading strategies.
+Preferred Features:
+  o A streamlined, intuitive trading platform with both live and historical market data.
+  o Tools for graphical representation of data to help visualize market trends over
+    different periods.
+    o Secure and fast integration with banking institutions for seamless transactions.
+
 Jira Link : https://njit-cs673-team1.atlassian.net/jira/software/projects/UT/boards/1?atlOrigin=eyJpIjoiNjgyOWU5MDhiNWIwNDFlNTlmMWI0MGI4MGE0OTNkNDAiLCJwIjoiaiJ9
 
 All stories and task are orderd based on their importance.Higher the story higher the importance in sprint (Ignore UT no as it is based on order of task creation )
@@ -55,5 +88,15 @@ Medium (3-5 points): Tasks that are more complex but still manageable.
 Large (8-13 points): Significant tasks that require considerable effort.
 Extra Large (20+ points): Very complex tasks that may need further breakdown.
 
+Definition of Done (DoD)
+A user story or task is considered done when the following criteria are met:
+1.	Code is Complete: All Acceptance Criteria described in the user story is fully implemented.
+2.	Code is Reviewed: The code has been peer-reviewed, approved and pasts all sanity tests
+3.	Unit and Integration Tests Pass:
+      o	Unit tests are written and pass with at least 80% coverage.
+      o	Integration tests are successful.
+4.	No Critical Bugs: There are no unresolved critical bugs, all issues have been documented, and issues with no business impact have been accepted and defined as such.
+5.	Feature is Deployed: The feature is deployed to the UAT environment and verified before moving into the production environment.
+6.	Product Owner Sign-off: The product owner confirms that the user story meets the required standards and is marked as done.
 
 
