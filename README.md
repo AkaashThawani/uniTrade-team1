@@ -82,7 +82,6 @@ The near vision for this trading platform could focus on establishing a strong f
 Product Backlogs Pivotal Tracker URL: https://www.pivotaltracker.com/n/projects/2721725
 
 **Estimated PBIs in story points:**
-*FRONT-END:*
 
 1. Real-Time Order Book Display - 3 story points
 2. Trade Matching Notifications - 1 story points
