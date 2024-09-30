@@ -109,7 +109,7 @@ Product Backlogs Pivotal Tracker URL: https://www.pivotaltracker.com/n/projects/
 **Estimation Techniques**
 
 Story Points: Assigning relative points to each item based on complexity and effort, allowing for quicker comparisons.
-Story points are often assigned using a non-linear scale (like the Fibonacci sequence: 1, 2, 3, 5, 8, 13, etc.) because the complexity of tasks can grow quickly as they become larger.\
+Story points are often assigned using a non-linear scale because the complexity of tasks can grow quickly as they become larger.\
 Smaller tasks: (1) These are simple tasks with low complexity.\
 Medium tasks: (2) These have moderate complexity and may involve more steps or risks.\
 Large tasks: (3) These are very complex, uncertain, or involve a lot of work.
