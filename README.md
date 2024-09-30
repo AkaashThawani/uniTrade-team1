@@ -17,6 +17,23 @@ Mohammed Hannan Desai - Devops & Testing
 
 The far vision for the product is to create an efficient trading platform to empower sellers and buyers to interact in the marketplace to buy and sell office commodities. The purpose of this trading system is to provide real time visibility, promote transparency, and control the market dynamics to allow for efficient trade execution. The key components of the vision is to display all of the sell and buy orders that are placed on the platform as well as the market depth that provides live quantities available with the current prices. This will allow the users to make sensible decisions before conducting their trade. Another key component is the trade matching feature which will automatically match the seller and buyers to each other based on the quantity and price desired. This will allow for seamless trade processes without causing discrepancies or delays in the orders. The long term goals of the product are to expand the platform’s global reach to a wider audience in various office supply markets and regions.
 
+**Near Vision**
+---------------------------------------------------------------------------------------------------------------------------
+
+The near vision for this trading platform could focus on establishing a strong foundation with essential features that deliver immediate value to early users. Here’s a potential outline:
+
+- Buy/Sell Order Placement: Enable users to seamlessly place and manage buy and sell orders for office commodities on the platform. This will establish the core trading functionality early on.
+
+- Real-Time Market Display: Provide users with a dynamic, real-time display of all active buy and sell orders, showing quantities and prices. This helps in promoting transparency and aids users in making informed decisions.
+
+- Basic Trade Matching Feature: Implement an initial version of the trade matching system to automatically pair buyers and sellers based on price and quantity. This feature will ensure efficient trade execution, helping minimize delays and discrepancies.
+
+- Market Depth Visualization: Introduce a feature to display market depth, showing users the available quantities and prices at different levels. This will give a clear view of market dynamics, helping users plan their trades better.
+
+- Limited Market Launch: Focus the platform’s initial rollout on a specific region or a narrow commodity segment to test functionality, gather feedback, and improve the system before expanding globally.
+
+- Basic User Interaction Tools: Offer essential tools for users to track orders, view transaction history, and analyze basic market trends, ensuring they have control over their trades and decisions.
+
 **Stakeholder Types**
 ---------------------------------------------------------------------------------------------------------------------------
 
