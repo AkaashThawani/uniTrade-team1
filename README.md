@@ -17,13 +17,22 @@ Mohammed Hannan Desai - Devops & Testing
 
 The far vision for the product is to create an efficient trading platform to empower sellers and buyers to interact in the marketplace to buy and sell office commodities. The purpose of this trading system is to provide real time visibility, promote transparency, and control the market dynamics to allow for efficient trade execution. The key components of the vision is to display all of the sell and buy orders that are placed on the platform as well as the market depth that provides live quantities available with the current prices. This will allow the users to make sensible decisions before conducting their trade. Another key component is the trade matching feature which will automatically match the seller and buyers to each other based on the quantity and price desired. This will allow for seamless trade processes without causing discrepancies or delays in the orders. The long term goals of the product are to expand the platform’s global reach to a wider audience in various office supply markets and regions.
 
-### User Persona: Trader
----------------------------------------------------------------------------------------------------------------------------
+**Stakeholder Types**
 
-- **Name**: Alex Johnson
-- **Age**: 32
-- **Occupation**: Independent Trader/Day Trader
-- **Experience**: 8 years in financial trading, specializing in equities and options trading.
+
+1. **Market Operators**: Market operators are responsible for managing the trading infrastructure of an exchange. They ensure that the platform functions smoothly, facilitating efficient trade matching and maintaining the order book. Their role also includes ensuring compliance with regulations and providing a transparent trading environment for all participants.
+
+2. **Traders**: Traders are individuals or entities actively engaged in buying and selling financial instruments within the market. They rely on the trading platform for timely execution of their orders, access to real-time market data, and analytical tools to inform their trading strategies. Their primary goal is to maximize profits through effective trading decisions.
+
+3. **Buyers**: Buyers are participants in the market looking to purchase financial instruments, such as stocks, commodities, or cryptocurrencies. They seek a user-friendly platform that allows them to execute orders efficiently and provides transparent pricing information. Buyers rely on the trading system to help them make informed investment decisions and achieve their financial objectives.
+
+**User Persona**
+#### User Persona: Trader
+
+ Name: Mahesh Babu
+ Age: 32
+ Occupation: Independent Trader
+ Experience: 8 years in financial trading, specializing in equities and options trading.
   
 #### Goals:
 - Execute trades quickly and efficiently to capitalize on market movements.
@@ -57,7 +66,6 @@ The far vision for the product is to create an efficient trading platform to emp
 - Reviewing and adjusting trading strategies based on performance and market shifts.
 - Participating in online trading communities for insights and sharing experiences. 
 
-This persona captures the essential characteristics and needs of a trader, which can help inform product design and development decisions.
 
 **Product Backlog Items as User Stories:**
 ---------------------------------------------------------------------------------------------------------------------------
