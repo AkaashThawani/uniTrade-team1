@@ -81,12 +81,19 @@ The near vision for this trading platform could focus on establishing a strong f
 
 Product Backlogs Pivotal Tracker URL: https://www.pivotaltracker.com/n/projects/2721725
 
----------------------------------------------------------------------------------------------------------------------------
-  **Estimated PBIs in story points:**
-  *FRONT-END:*
+**Estimated PBIs in story points:**
+*FRONT-END:*
 
-  1. Real-Time Order Book Display - 8 story points
-  2. Trade Matching Notifications - 5 story points
-  3. User-Friendly Trade Execution Interface - 8 story points
+1. Real-Time Order Book Display - 8 story points
+2. Trade Matching Notifications - 5 story points
+3. User-Friendly Trade Execution Interface - 8 story points
+
+**Estimation Techniques**
+
+Story Points: Assigning relative points to each item based on complexity and effort, allowing for quicker comparisons.
+Story points are often assigned using a non-linear scale (like the Fibonacci sequence: 1, 2, 3, 5, 8, 13, etc.) because the complexity of tasks can grow quickly as they become larger.
+Smaller tasks: (1) These are simple tasks with low complexity.
+Medium tasks: (2) These have moderate complexity and may involve more steps or risks.
+Large tasks: (3) These are very complex, uncertain, or involve a lot of work.
 
 
