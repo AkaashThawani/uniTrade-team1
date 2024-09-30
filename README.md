@@ -6,7 +6,7 @@ This microservice provides a stub for a market (or an exchange). This will provi
 
 
 Mona Shaban - Business Analyst \
-Srushti Thakre - UI/UX Developer & Team Lead \
+Srushti Thakre - Team Lead & UI/UX Developer \
 Revanth Guntupalli - Microservice Developer \
 Niharika Jamble - Database Design \
 Mohammed Hannan Desai - Devops & Testing 
