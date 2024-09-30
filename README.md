@@ -108,7 +108,7 @@ Product Backlogs Pivotal Tracker URL: https://www.pivotaltracker.com/n/projects/
 
 **Estimation Techniques**
 
-Story Points: Assigning relative points to each item based on complexity and effort, allowing for quicker comparisons.
+Story Points: Assigning relative points to each item based on complexity and effort, allowing for quicker comparisons.PBIs were placed into pre-defined "buckets" that represent different effort levels (e.g., 1, 2, 3 story points). Team members were quickly able to assign PBIs to appropriate buckets.
 Story points are often assigned using a non-linear scale because the complexity of tasks can grow quickly as they become larger.\
 Smaller tasks: (1) These are simple tasks with low complexity.\
 Medium tasks: (2) These have moderate complexity and may involve more steps or risks.\
