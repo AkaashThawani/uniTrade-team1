@@ -84,9 +84,9 @@ Product Backlogs Pivotal Tracker URL: https://www.pivotaltracker.com/n/projects/
 **Estimated PBIs in story points:**
 *FRONT-END:*
 
-1. Real-Time Order Book Display - 8 story points
-2. Trade Matching Notifications - 5 story points
-3. User-Friendly Trade Execution Interface - 8 story points
+1. Real-Time Order Book Display - 3 story points
+2. Trade Matching Notifications - 1 story points
+3. User-Friendly Trade Execution Interface - 3 story points
 
 **Estimation Techniques**
 
