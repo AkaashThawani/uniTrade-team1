@@ -90,9 +90,13 @@ Product Backlogs Pivotal Tracker URL: https://www.pivotaltracker.com/n/projects/
 **Estimation Techniques**
 
 Story Points: Assigning relative points to each item based on complexity and effort, allowing for quicker comparisons.
-Story points are often assigned using a non-linear scale (like the Fibonacci sequence: 1, 2, 3, 5, 8, 13, etc.) because the complexity of tasks can grow quickly as they become larger.
-Smaller tasks: (1) These are simple tasks with low complexity.
-Medium tasks: (2) These have moderate complexity and may involve more steps or risks.
+Story points are often assigned using a non-linear scale (like the Fibonacci sequence: 1, 2, 3, 5, 8, 13, etc.) because the complexity of tasks can grow quickly as they become larger.\
+Smaller tasks: (1) These are simple tasks with low complexity.\
+Medium tasks: (2) These have moderate complexity and may involve more steps or risks.\
 Large tasks: (3) These are very complex, uncertain, or involve a lot of work.
+
+**Definition Of Ready(DOR)**
+
+A Definition of Ready (DoR) for us to make sure every checklist or set of criteria that ensures a product backlog item or user story is sufficiently prepared and understood before the development team begins working on it. This DoR will help us ensure clarity, alignment, and that all necessary information is available for the team to proceed without ambiguity.
 
 
