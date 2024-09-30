@@ -9,13 +9,16 @@ Mona Shaban - Business Analyst \
 Srushti Thakre - UI/UX Developer \
 Revanth Guntupalli - Microservice Developer \
 Niharika Jamble - Database Design \
-Mohammed Hannan Desai - Devops & Testing
+Mohammed Hannan Desai - Devops & Testing 
 
 **Far Vision** 
 ---------------------------------------------------------------------------------------------------------------------------
 
 
-The far vision for the product is to create an efficient trading platform to empower sellers and buyers to interact in the marketplace to buy and sell office commodities. The purpose of this trading system is to provide real time visibility, promote transparency, and control the market dynamics to allow for efficient trade execution. The key components of the vision is to display all of the sell and buy orders that are placed on the platform as well as the market depth that provides live quantities available with the current prices. This will allow the users to make sensible decisions before conducting their trade. Another key component is the trade matching feature which will automatically match the seller and buyers to each other based on the quantity and price desired. This will allow for seamless trade processes without causing discrepancies or delays in the orders. The long term goals of the product are to expand the platform’s global reach to a wider audience in various office supply markets and regions.
+The ultimate goal for the Order Book and Trade Matching module is to build a sophisticated trading platform that operates efficiently and transparently. This platform will serve as the core of the trading system, enabling users to engage in seamless transactions. The order book will provide real-time updates, displaying live market depth, allowing both buyers and sellers to view current prices and quantities at various levels. This transparency will help users make informed decisions by showcasing available supply and demand, thereby driving competitive pricing.
+In the future, the platform will utilize advanced algorithms to match orders in real time, ensuring that trades are executed swiftly and accurately. The system will be capable of handling high volumes of trades with precision, making it reliable for users even during peak trading periods. It will also feature comprehensive reporting and analytics, enabling users to track historical transactions, market trends, and personal trading performance. Ultimately, this module will create an environment where users can confidently and efficiently conduct trades, benefiting from a fair, fast, and transparent marketplace.
+This product can then be expanded to trade in multiple markets.
+
 
 **Near Vision**
 ---------------------------------------------------------------------------------------------------------------------------
@@ -37,43 +40,51 @@ The near vision for this trading platform could focus on establishing a strong f
 **Stakeholder Types**
 ---------------------------------------------------------------------------------------------------------------------------
 
-1. **Market Operators**: Market operators are responsible for managing the trading infrastructure of an exchange. They ensure that the platform functions smoothly, facilitating efficient trade matching and maintaining the order book. Their role also includes ensuring compliance with regulations and providing a transparent trading environment for all participants.
+1. **Buyers**: Buyers rely on the Order Book and Trade Matching module to access real-time market data, including prices and available quantities. They use this information to place competitive bids, ensuring they get the best possible deals on office supplies. Buyers benefit from the transparency and speed of the system, allowing them to make informed decisions and execute trades swiftly.
 
-2. **Traders**: Traders are individuals or entities actively engaged in buying and selling financial instruments within the market. They rely on the trading platform for timely execution of their orders, access to real-time market data, and analytical tools to inform their trading strategies. Their primary goal is to maximize profits through effective trading decisions.
+2. **Sellers**: Sellers utilize the module to gain visibility into buyer demand and market conditions. By seeing current buy orders and price trends, sellers can adjust their pricing strategies to maximize profits and ensure quick sales. The platform’s transparent and efficient matching system allows sellers to reduce the time their products remain unsold, thus optimizing their trading experience.
 
-3. **Buyers**: Buyers are participants in the market looking to purchase financial instruments, such as stocks, commodities, or cryptocurrencies. They seek a user-friendly platform that allows them to execute orders efficiently and provides transparent pricing information. Buyers rely on the trading system to help them make informed investment decisions and achieve their financial objectives.
+3. **Platform Administrators**: Administrators oversee the proper functioning of the Order Book and Trade Matching system. They ensure that orders are matched quickly and fairly, maintaining a seamless user experience. Additionally, administrators monitor for system bottlenecks or mismatches and enforce compliance with the platform's rules. Their role is to maintain system integrity, stability, and efficiency, ensuring an optimal trading environment for all users.
+
 
 **User Persona**
 ---------------------------------------------------------------------------------------------------------------------------
 
 #### User Persona: Trader
 
- Name: Mahesh Babu\
- Age: 32\
- Occupation: Independent Trader\
- Experience: 8 years in financial trading, specializing in equities and options trading
+Name: Alexa Siri
+Age: 38
+Occupation: Office Manager at a medium-sized corporation
   
+  Experience:
+10 years managing office logistics and procurement, with extensive experience in purchasing bulk office supplies and negotiating with vendors for optimal pricing.
 #### Goals:
-- Execute trades quickly and efficiently to capitalize on market movements.
-- Access real-time market data and analytics to make informed trading decisions.
-- Minimize transaction costs and maximize profitability through strategic trading.
+Purchase office supplies efficiently at competitive prices, ensuring that the company gets the best deals available.
+Manage procurement within budget constraints while ensuring the timely delivery of necessary products.
+Use data to make informed purchasing decisions and track spending trends over time.
+
 
 #### Pain Points:
-- Frustration with slow order execution times, leading to missed opportunities.
-- Challenges in analyzing multiple data sources and indicators simultaneously.
+Frustrated by slow trade matching processes, which delay her ability to secure essential supplies.
+Lacks transparency into supply availability, causing difficulty in forecasting and planning purchases.
+Experiences difficulty in finding reliable suppliers for specific items during periods of high demand.
+
 
 #### Technology Proficiency:
-- High; comfortable using trading platforms, financial analysis software, and mobile trading apps.
-- Familiar with various order types (limit, market, stop-loss) and trading strategies (scalping, swing trading).
+Moderate; comfortable using basic procurement software and platforms for placing orders and managing inventory. Familiar with using spreadsheets for tracking and analytics. Needs intuitive interfaces for order placement and real-time data.
 
 #### Tools Preferred:
-- Advanced trading platforms with real-time data feeds and charting tools.
-- Mobile trading apps for on-the-go access to market information.
-- Analytical tools for tracking performance and backtesting strategies.
+Web-based procurement platforms with clear market depth and pricing details.
+Real-time notifications for changes in prices and product availability to aid in decision-making.
+Simple, intuitive interfaces for placing bulk orders and tracking supply deliveries.
+
 
 #### Day-to-Day Activities:
-- Placing buy and sell orders based on technical analysis and market trends.
-- Reviewing and adjusting trading strategies based on performance and market shifts.
+Managing office supply inventory and placing orders based on departmental needs and budget allocations.
+Comparing vendor prices and product availability, often working under tight deadlines.
+Communicating with finance and suppliers to ensure smooth procurement processes, including payment and delivery tracking.
+Monitoring the platform for updated pricing trends and order fulfillment progress.
+
 
 
 **Product Backlog Items as User Stories:**
