@@ -79,7 +79,7 @@ The near vision for this trading platform could focus on establishing a strong f
 **Product Backlog Items as User Stories:**
 ---------------------------------------------------------------------------------------------------------------------------
 
-Pivotal Tracker URL: https://www.pivotaltracker.com/n/projects/2721725
+Porduct Backlogs Pivotal Tracker URL: https://www.pivotaltracker.com/n/projects/2721725
 
 *FRONT-END:*
 
