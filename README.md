@@ -57,18 +57,10 @@ The near vision for this trading platform could focus on establishing a strong f
 - Execute trades quickly and efficiently to capitalize on market movements.
 - Access real-time market data and analytics to make informed trading decisions.
 - Minimize transaction costs and maximize profitability through strategic trading.
-- Stay updated on market news and trends to anticipate price movements.
 
 #### Pain Points:
 - Frustration with slow order execution times, leading to missed opportunities.
-- Difficulty in navigating complex trading platforms with excessive features.
-- Lack of transparency in fees and commissions, impacting overall profitability.
 - Challenges in analyzing multiple data sources and indicators simultaneously.
-
-#### Motivations:
-- Desire for financial independence and the ability to generate substantial income through trading.
-- Interest in leveraging advanced trading tools and technology to gain a competitive edge.
-- Motivation to continuously improve trading strategies and performance through education and practice.
 
 #### Technology Proficiency:
 - High; comfortable using trading platforms, financial analysis software, and mobile trading apps.
@@ -80,10 +72,8 @@ The near vision for this trading platform could focus on establishing a strong f
 - Analytical tools for tracking performance and backtesting strategies.
 
 #### Day-to-Day Activities:
-- Monitoring market conditions and relevant news throughout the trading day.
 - Placing buy and sell orders based on technical analysis and market trends.
 - Reviewing and adjusting trading strategies based on performance and market shifts.
-- Participating in online trading communities for insights and sharing experiences. 
 
 
 **Product Backlog Items as User Stories:**
