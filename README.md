@@ -95,9 +95,16 @@ Product Backlogs Pivotal Tracker URL: https://www.pivotaltracker.com/n/projects/
 **Estimated PBIs in story points:**
 
 1. Real-Time Order Book Display - 3 story points
-2. Trade Matching Notifications - 1 story points
-3. User-Friendly Trade Execution Interface - 3 story points
-4. Batch Program for Buyer-Seller Matching - 3 story points
+2. Combine Market Watch and Order Entry UI on a Single Page - 2 story points
+3. Enable Buy and Sell on the Same Screen for Customers - 1 story points
+4. Prevent Self-Matching of Buy and Sell Orders - 1 story points
+5. User-Friendly Trade Execution Interface - 2 story points
+6. Trade Matching Notifications - 3 story points
+7. Retrieve Detailed Order and Trade Data by Product and Role - 3 story points
+8. Enable Anonymous Trading in a Closed Market - 3 story points
+9. Allow Sellers to Edit Product Details and have control on the activation of new details - 3 story points
+10. Batch Program for Buyer-Seller Matching - 2 story points
+11. Enable Session Reversion for Admins - 3 story points
 
 **Estimation Techniques**
 
