@@ -1,121 +1,148 @@
-# Team 3 - Market Order Book, Trade matching
-This microservice provides a stub for a market (or an exchange). This will provide remaining services which are critical for a functioning trading platform.
+# uniTrade - Team A
 
-**Team Members** 
----------------------------------------------------------------------------------------------------------------------------
+## Market Data: Live & Historic
 
+### Team Members:
+- **Akaash Thawani** - Backend
+- **Jyotiraditya Jyotiraditya** - Frontend
+- **Christine Maynard** - DevOps
+- **Snehal Suresh Nikalje** - Business Analyst
+- **Sindhusha Pasumarthi** - Testing
 
-Mona Shaban - Business Analyst \
-Srushti Thakre - Team Lead & UI/UX Developer \
-Revanth Guntupalli - Microservice Developer \
-Niharika Jamble - Database Design \
-Mohammed Hannan Desai - Devops & Testing 
+### GitHub Repositories:
+- [Backend Repository](https://github.com/AkaashThawani/uniTrade-team1)
+- [Frontend Repository](https://github.com/SDPM-CS673/electronic-trading-system-app)
 
-**Far Vision** 
----------------------------------------------------------------------------------------------------------------------------
+### Jira Link:
+- [Jira Board](https://njit-cs673-team1.atlassian.net/jira/software/projects/UT/boards/1?atlOrigin=eyJpIjoiNjgyOWU5MDhiNWIwNDFlNTlmMWI0MGI4MGE0OTNkNDAiLCJwIjoiaiJ9)
 
+## Vision
 
-The ultimate goal for the Order Book and Trade Matching module is to build a sophisticated trading platform that operates efficiently and transparently. This platform will serve as the core of the trading system, enabling users to engage in seamless transactions. The order book will provide real-time updates, displaying live market depth, allowing both buyers and sellers to view current prices and quantities at various levels. This transparency will help users make informed decisions by showcasing available supply and demand, thereby driving competitive pricing.
-In the future, the platform will utilize advanced algorithms to match orders in real time, ensuring that trades are executed swiftly and accurately. The system will be capable of handling high volumes of trades with precision, making it reliable for users even during peak trading periods. It will also feature comprehensive reporting and analytics, enabling users to track historical transactions, market trends, and personal trading performance. Ultimately, this module will create an environment where users can confidently and efficiently conduct trades, benefiting from a fair, fast, and transparent marketplace.
-This product can then be expanded to trade in multiple markets.
+### Far Vision:
+uniTrade aims to become a comprehensive digital trading platform, providing access to live market data, secure trading, portfolio management, and advanced analytics. The platform will support multiple markets, including stocks, cryptocurrencies, and commodities, with a focus on scalability, integration with financial institutions, and AI-based trading recommendations.
 
+Key Features:
+- Support for multiple markets and assets (stocks, crypto, commodities).
+- Advanced analytics and portfolio management tools.
+- Highly scalable infrastructure.
+- Seamless integration with financial institutions.
+- Secure and user-friendly platform for traders of all levels.
+- Bulk trading, customized trading strategies, and AI-based recommendations.
 
-**Near Vision**
----------------------------------------------------------------------------------------------------------------------------
+### Near Vision:
+The initial release will focus on delivering a basic, functional trading platform with the ability to:
+- Register and log in securely.
+- View live market data and watchlists.
+- Perform real-time trading and order matching.
+- Track trading positions.
+- Provide a simple user interface with real-time updates.
 
-The near vision for this trading platform could focus on establishing a strong foundation with essential features that deliver immediate value to early users. Here’s a potential outline:
+## Stakeholders:
 
-- Buy/Sell Order Placement: Enable users to seamlessly place and manage buy and sell orders for office commodities on the platform. This will establish the core trading functionality early on.
+### 1. Retail/Individual Traders
+**Description**: Traders (beginners & experienced) buying and selling stocks, crypto, or commodities for personal financial growth.  
+**Needs**:
+- Real-time and historical market data.
+- User-friendly interface with watchlists, portfolio tracking, and analytics.
+- Educational tools for beginners and advanced charting for experienced users.
 
-- Real-Time Market Display: Provide users with a dynamic, real-time display of all active buy and sell orders, showing quantities and prices. This helps in promoting transparency and aids users in making informed decisions.
+### 2. Financial Institutions
+#### a. Investment Banks
+**Description**: Hedge funds, mutual funds, and banks trading large volumes.  
+**Needs**:
+- Bulk trading and advanced analytics.
+- Customizable strategies and real-time insights.
+- Integration with proprietary systems and compliance.
 
-- Basic Trade Matching Feature: Implement an initial version of the trade matching system to automatically pair buyers and sellers based on price and quantity. This feature will ensure efficient trade execution, helping minimize delays and discrepancies.
+#### b. Financial Advisors
+**Description**: Professionals managing portfolios for clients.  
+**Needs**:
+- Portfolio management tools.
+- In-depth analysis of market trends and historical data.
+- Real-time alerts and notifications.
 
-- Market Depth Visualization: Introduce a feature to display market depth, showing users the available quantities and prices at different levels. This will give a clear view of market dynamics, helping users plan their trades better.
+### 3. Market Participants (SEC-Regulated)
+Includes broker-dealers, clearing agencies, and securities exchanges like the NYSE and NASDAQ.
 
-- Limited Market Launch: Focus the platform’s initial rollout on a specific region or a narrow commodity segment to test functionality, gather feedback, and improve the system before expanding globally.
+## User Personas:
 
-- Basic User Interaction Tools: Offer essential tools for users to track orders, view transaction history, and analyze basic market trends, ensuring they have control over their trades and decisions.
+### 1. Sarah - Independent Trader
+**Age**: 38 | **Location**: London, UK  
+**Occupation**: Independent Trader  
+**Background**: Transitioned from corporate finance into full-time independent trading.  
+**Goals**: Maximize returns using real-time data, analyze market trends.  
+**Challenges**: Finding reliable data sources, navigating complex platforms.  
+**Preferred Features**: Real-time and historical data, advanced charting, seamless transactions.
 
-**Stakeholder Types**
----------------------------------------------------------------------------------------------------------------------------
+### 2. David - Financial Advisor at Investment Bank
+**Age**: 45 | **Location**: New York City, USA  
+**Occupation**: Financial Advisor  
+**Background**: 20+ years in financial advisory, managing high-net-worth portfolios.  
+**Goals**: Provide data-driven investment advice, stay ahead of market trends.  
+**Challenges**: Managing multiple clients, analyzing large data sets quickly.  
+**Preferred Features**: Detailed market analytics, comparison tools, secure data handling.
 
-1. **Buyers**: Buyers rely on the Order Book and Trade Matching module to access real-time market data, including prices and available quantities. They use this information to place competitive bids, ensuring they get the best possible deals on office supplies. Buyers benefit from the transparency and speed of the system, allowing them to make informed decisions and execute trades swiftly.
+### 3. Maria - Market Participant at Securities Exchange
+**Age**: 50 | **Location**: Chicago, USA  
+**Occupation**: Market Participant  
+**Background**: 25 years in finance, focusing on securities exchange operations.  
+**Goals**: Ensure compliant and smooth market transactions.  
+**Challenges**: Handling high trade volumes, staying up-to-date with regulations.  
+**Preferred Features**: Real-time market oversight, secure data transfer, reporting tools.
 
-2. **Sellers**: Sellers utilize the module to gain visibility into buyer demand and market conditions. By seeing current buy orders and price trends, sellers can adjust their pricing strategies to maximize profits and ensure quick sales. The platform’s transparent and efficient matching system allows sellers to reduce the time their products remain unsold, thus optimizing their trading experience.
+## User Stories and Tasks:
 
-3. **Platform Administrators**: Administrators oversee the proper functioning of the Order Book and Trade Matching system. They ensure that orders are matched quickly and fairly, maintaining a seamless user experience. Additionally, administrators monitor for system bottlenecks or mismatches and enforce compliance with the platform's rules. Their role is to maintain system integrity, stability, and efficiency, ensuring an optimal trading environment for all users.
+### 1. Scrum Master and Business Analyst (BA)
+- **User Story**: Create a Jira dashboard for tracking sprint progress.  
+  **Story Points**: 3  
+- **User Story**: Create user stories with clear acceptance criteria.  
+  **Story Points**: 2  
+- **User Story**: Conduct weekly scrum calls.  
+  **Story Points**: 2  
+- **User Story**: Plan sprints and estimate tasks.  
+  **Story Points**: 3  
+- **User Story**: Conduct retrospective meetings.  
+  **Story Points**: 2
 
+### 2. Frontend Tasks
+- **User Story**: Create a basic UI structure.  
+  **Story Points**: 5  
+- **User Story**: Graphical representations of historic market data (1 week to 1 year).  
+  **Story Points**: 8  
+- **User Story**: Graphical representations of live market data (1 day).  
+  **Story Points**: 5  
+- **User Story**: Compare multiple companies' market performance.  
+  **Story Points**: 5  
+- **User Story**: Integrate frontend with backend.  
+  **Story Points**: 8
 
-**User Persona**
----------------------------------------------------------------------------------------------------------------------------
+### 3. Backend Tasks
+- **User Story**: Set up the database schema.  
+  **Story Points**: 5  
+- **User Story**: Add market data to the database.  
+  **Story Points**: 3  
+- **User Story**: Create CRUD APIs for market data.  
+  **Story Points**: 8  
+- **User Story**: Integrate backend with frontend.  
+  **Story Points**: 8
 
-#### User Persona: Trader
+### 4. QA Tasks
+- **User Story**: Perform sanity checks.  
+  **Story Points**: 2  
+- **User Story**: Conduct feature testing.  
+  **Story Points**: 5
 
-Name: Alexa Siri
-Age: 38
-Occupation: Office Manager at a medium-sized corporation
-  
-  Experience:
-10 years managing office logistics and procurement, with extensive experience in purchasing bulk office supplies and negotiating with vendors for optimal pricing.
-#### Goals:
-Purchase office supplies efficiently at competitive prices, ensuring that the company gets the best deals available.
-Manage procurement within budget constraints while ensuring the timely delivery of necessary products.
-Use data to make informed purchasing decisions and track spending trends over time.
+### 5. DevOps Tasks
+- **User Story**: Set up UAT environment.  
+  **Story Points**: 5  
+- **User Story**: Implement CI/CD pipelines.  
+  **Story Points**: 8
 
-
-#### Pain Points:
-Frustrated by slow trade matching processes, which delay her ability to secure essential supplies.
-Lacks transparency into supply availability, causing difficulty in forecasting and planning purchases.
-Experiences difficulty in finding reliable suppliers for specific items during periods of high demand.
-
-
-#### Technology Proficiency:
-Moderate; comfortable using basic procurement software and platforms for placing orders and managing inventory. Familiar with using spreadsheets for tracking and analytics. Needs intuitive interfaces for order placement and real-time data.
-
-#### Tools Preferred:
-Web-based procurement platforms with clear market depth and pricing details.
-Real-time notifications for changes in prices and product availability to aid in decision-making.
-Simple, intuitive interfaces for placing bulk orders and tracking supply deliveries.
-
-
-#### Day-to-Day Activities:
-Managing office supply inventory and placing orders based on departmental needs and budget allocations.
-Comparing vendor prices and product availability, often working under tight deadlines.
-Communicating with finance and suppliers to ensure smooth procurement processes, including payment and delivery tracking.
-Monitoring the platform for updated pricing trends and order fulfillment progress.
-
-
-
-**Product Backlog Items as User Stories:**
----------------------------------------------------------------------------------------------------------------------------
-
-Product Backlogs Pivotal Tracker URL: https://www.pivotaltracker.com/n/projects/2721725
-
-**Estimated PBIs in story points:**
-
-1. Real-Time Order Book Display - 3 story points
-2. Combine Market Watch and Order Entry UI on a Single Page - 2 story points
-3. Enable Buy and Sell on the Same Screen for Customers - 1 story points
-4. Prevent Self-Matching of Buy and Sell Orders - 1 story points
-5. User-Friendly Trade Execution Interface - 2 story points
-6. Trade Matching Notifications - 3 story points
-7. Retrieve Detailed Order and Trade Data by Product and Role - 3 story points
-8. Enable Anonymous Trading in a Closed Market - 3 story points
-9. Allow Sellers to Edit Product Details and have control on the activation of new details - 3 story points
-10. Batch Program for Buyer-Seller Matching - 2 story points
-11. Enable Session Reversion for Admins - 3 story points
-
-**Estimation Techniques**
-
-Story Points: Assigning relative points to each item based on complexity and effort, allowing for quicker comparisons.PBIs were placed into pre-defined "buckets" that represent different effort levels (e.g., 1, 2, 3 story points). Team members were quickly able to assign PBIs to appropriate buckets.
-Story points are often assigned using a non-linear scale because the complexity of tasks can grow quickly as they become larger.\
-Smaller tasks: (1) These are simple tasks with low complexity.\
-Medium tasks: (2) These have moderate complexity and may involve more steps or risks.\
-Large tasks: (3) These are very complex, uncertain, or involve a lot of work.
-
-**Definition Of Ready(DOR)**
-
-A Definition of Ready (DoR) for us to make sure every checklist or set of criteria that ensures a product backlog item or user story is sufficiently prepared and understood before the development team begins working on it. This DoR will help us ensure clarity, alignment, and that all necessary information is available for the team to proceed without ambiguity.
-
-
+## Definition of Done (DoD):
+A task is considered done when:
+1. Code is complete, with all acceptance criteria met.
+2. Code is reviewed and passes all tests.
+3. Unit and integration tests pass with 80% coverage.
+4. No critical bugs remain.
+5. Feature is deployed and verified.
+6. Product Owner signs off.
