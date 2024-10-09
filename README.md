@@ -92,51 +92,54 @@ Includes broker-dealers, clearing agencies, and securities exchanges like the NY
 
 ## User Stories and Tasks:
 
-### 1. Scrum Master and Business Analyst (BA)
-- **User Story**: Create a Jira dashboard for tracking sprint progress.  
-  **Story Points**: 3  
-- **User Story**: Create user stories with clear acceptance criteria.  
-  **Story Points**: 2  
-- **User Story**: Conduct weekly scrum calls.  
-  **Story Points**: 2  
-- **User Story**: Plan sprints and estimate tasks.  
-  **Story Points**: 3  
-- **User Story**: Conduct retrospective meetings.  
-  **Story Points**: 2
+### User Stories
+1. **User Story**: As a Scrum Master, I want to create a Jira dashboard so that the team can track sprint progress in real time.  
+   **Story Points**: 3
+2. **User Story**: As a Product Owner, I want to create user stories with clear acceptance criteria so that the development team can deliver features that meet business needs.  
+   **Story Points**: 2
+3. **User Story**: As a Scrum Master, I want to conduct weekly scrum calls so that the team remains aligned on sprint goals and blockers are addressed.  
+   **Story Points**: 2
+4. **User Story**: As a Scrum Master, I want to communicate with cross-functional teams so that dependencies are managed and the project timeline is adhered to.  
+   **Story Points**: 3
+5. **User Story**: As a Scrum Master, I want to plan sprints and perform t-shirt sizing for tasks so that we can prioritize and estimate work accurately.  
+   **Story Points**: 3
+6. **User Story**: As a Scrum Master, I want to conduct retrospective meetings so that the team can reflect and improve on their processes.  
+   **Story Points**: 2
+7. **User Story**: As a user, I want a basic UI structure for the website so that I can easily navigate through the market data.  
+   **Story Points**: 3
+8. **User Story**: As a user, I want to view graphical representations of historic market data (1 week, 1 month, 6 months, 1 year) so that I can analyze past trends.  
+   **Story Points**: 5
+9. **User Story**: As a user, I want to view graphical representations of live market data (1 day) so that I can monitor real-time changes.  
+   **Story Points**: 3
+10. **User Story**: As a user, I want to view data of multiple companies on a single screen so that I can compare their market performance.  
+    **Story Points**: 3
+11. **User Story**: As a developer, I want to integrate the front end with the backend so that data flows seamlessly between both systems.  
+    **Story Points**: 5
+12. **User Story**: As a developer, I want to perform unit testing for frontend components so that I can ensure the UI works as expected.  
+    **Story Points**: 2
+13. **User Story**: As a developer, I want to set up the database schema so that the market data is stored and organized correctly.  
+    **Story Points**: 3
+14. **User Story**: As a developer, I want to add market data to the database so that I can ensure that the application has up-to-date information.  
+    **Story Points**: 2
+15. **User Story**: As a developer, I want to create CRUD APIs for market data so that the front end can retrieve and modify data.  
+    **Story Points**: 5
+16. **User Story**: As a developer, I want to integrate the backend with the front end so that the user can interact with live market data.  
+    **Story Points**: 5
+17. **User Story**: As a developer, I want to perform unit testing for the backend so that I can ensure API endpoints work correctly.  
+    **Story Points**: 2
+18. **User Story**: As a QA, I want to perform a sanity check on the application so that I can verify that all basic features are functioning properly.  
+    **Story Points**: 2
+19. **User Story**: As a QA, I want to conduct feature and functional testing so that I can ensure the system performs as expected under different conditions.  
+    **Story Points**: 3
+20. **User Story**: As a QA, I want to conduct release testing so that the system is validated before it goes live.  
+    **Story Points**: 3
+21. **User Story**: As a DevOps engineer, I want to set up a UAT environment so that the QA team can test the application in a near-production setup.  
+    **Story Points**: 3
+22. **User Story**: As a DevOps engineer, I want to set up the production environment so that the application can go live for end users.  
+    **Story Points**: 5
+23. **User Story**: As a DevOps engineer, I want to implement CI/CD pipelines so that the deployment process is automated and faster.  
+    **Story Points**: 5
 
-### 2. Frontend Tasks
-- **User Story**: Create a basic UI structure.  
-  **Story Points**: 5  
-- **User Story**: Graphical representations of historic market data (1 week to 1 year).  
-  **Story Points**: 8  
-- **User Story**: Graphical representations of live market data (1 day).  
-  **Story Points**: 5  
-- **User Story**: Compare multiple companies' market performance.  
-  **Story Points**: 5  
-- **User Story**: Integrate frontend with backend.  
-  **Story Points**: 8
-
-### 3. Backend Tasks
-- **User Story**: Set up the database schema.  
-  **Story Points**: 5  
-- **User Story**: Add market data to the database.  
-  **Story Points**: 3  
-- **User Story**: Create CRUD APIs for market data.  
-  **Story Points**: 8  
-- **User Story**: Integrate backend with frontend.  
-  **Story Points**: 8
-
-### 4. QA Tasks
-- **User Story**: Perform sanity checks.  
-  **Story Points**: 2  
-- **User Story**: Conduct feature testing.  
-  **Story Points**: 5
-
-### 5. DevOps Tasks
-- **User Story**: Set up UAT environment.  
-  **Story Points**: 5  
-- **User Story**: Implement CI/CD pipelines.  
-  **Story Points**: 8
 
 ## Definition of Done (DoD):
 A task is considered done when:
