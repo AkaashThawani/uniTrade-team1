@@ -23,5 +23,12 @@ CREATE TABLE IF NOT EXISTS MarketData (
     FOREIGN KEY(product_id) REFERENCES Products(id)
 );
 
-INSERT INTO Categories(name, description)
-VALUES ('Clothing', 'Pants')
+CREATE TABLE IF NOT EXISTS Users(
+     id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    role ENUM('admin', 'user') NOT NULL DEFAULT 'admin',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
