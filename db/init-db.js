@@ -15,6 +15,7 @@ const connection = mysql.createConnection({
     database: process.env.MYSQL_DATABASE_DEV
 });
 
+console.log("Creating database connection to uniTrade dev")
 connection.query(`CREATE DATABASE IF NOT EXISTS uniTrade_dev`, (err) => {
     if (err) throw err;
     console.log('Database uniTrade_dev created successfully');
@@ -22,11 +23,25 @@ connection.query(`CREATE DATABASE IF NOT EXISTS uniTrade_dev`, (err) => {
     // Execute the schema.sql script
     connection.changeUser({ database: 'uniTrade_dev' }, (err) => {
       if (err) throw err;
+      console.log('Switched to database uniTrade_dev.');
   
-      connection.query(schema, (err) => {
-        if (err) throw err;
-        console.log('Tables created successfully.');
+      console.log('Running schema...');
+      // Splitting the schema into individual statements since it seems like mysql package is unable to parse them correctlt
+      const statements = schema.split(';').map(stmt => stmt.trim()).filter(stmt => stmt.length > 0);
+      (async () => {
+        for (const stmt of statements) {
+          try {
+            console.log(`Executing: ${stmt}`);
+            await connection.promise().query(stmt);
+          } catch (err) {
+            console.error('Error executing statement:', stmt);
+            console.error(err);
+            connection.end();
+            return;
+          }
+        }
+        console.log('Schema executed successfully.');
         connection.end();
-      });
+      })();
     });
   });
