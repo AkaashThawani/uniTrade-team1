@@ -12,7 +12,6 @@ const connection = mysql.createConnection({
     host: process.env.MYSQL_HOST_DEV,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE_DEV
 });
 
 console.log("Creating database connection to uniTrade dev")
