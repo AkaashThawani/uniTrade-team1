@@ -6,7 +6,7 @@ const {
 
 const router = express.Router();
 
-router.post("/cproducts", createProduct);
+router.post("/products", createProduct);
 router.get("/product/:name", product);
 router.put("/product/:id", updateProduct);
 
