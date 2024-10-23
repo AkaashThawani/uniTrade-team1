@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/market-data", addMarketData);
 router.get("/market-data/:id", getMarketDataById);
-router.post("/market-data", getAllMarketData);
+router.get("/market-data", getAllMarketData);
 router.put("/market-data/:id", updateMarketData);
 router.delete("/market-data/:id", deleteMarketData);
 
