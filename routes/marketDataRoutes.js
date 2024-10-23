@@ -1,5 +1,6 @@
+const express = require("express");
 const {
-  createMarketData,
+  addMarketData,
   getAllMarketData,
   getMarketDataById,
   updateMarketData,
@@ -8,7 +9,7 @@ const {
 
 const router = express.Router();
 
-router.post("/market-data", createMarketData);
+router.post("/market-data", addMarketData);
 router.get("/market-data/:id", getMarketDataById);
 router.post("/market-data", getAllMarketData);
 router.put("/market-data/:id", updateMarketData);

@@ -21,6 +21,8 @@ CREATE TABLE IF NOT EXISTS MarketData (
     price DECIMAL(10,2),
     volume INT,
     FOREIGN KEY(product_id) REFERENCES Products(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Users(

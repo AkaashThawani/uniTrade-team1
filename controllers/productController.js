@@ -3,9 +3,9 @@ const db = require("../db/database");
 const createProduct = async (req, res) => {
   const { name, category_id, price, stock_quantity } = req.body;
 
-  if (!name || !category_id) {
+  if (!name || !category_id || !price || stock_quantity == 0) {
     return res.status(400).json({
-      error: "Category name and associated category are required",
+      error: "Missing required fields",
     });
   }
 
