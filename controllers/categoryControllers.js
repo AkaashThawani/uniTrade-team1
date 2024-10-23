@@ -1,5 +1,6 @@
 const db = require("../db/database");
 
+// the name is self explanatory :)
 const createCategory = async (req, res) => {
   const { name, description } = req.body;
 
@@ -26,11 +27,12 @@ const createCategory = async (req, res) => {
   }
 };
 
+// Returns a category using a valid category name
 const category = async (req, res) => {
   try {
     const { name } = req.params;
     const [rows] = await db.query(
-      "SELECT * FROM Categories WHERE name = ? AND isDeleted = FALSE", // prevents soft deleted categories from being returned
+      "SELECT * FROM Categories WHERE name = ? AND isDeleted = 0", // prevents soft deleted categories from being returned
       [name]
     );
     if (rows.length == 0) {
@@ -49,12 +51,13 @@ const category = async (req, res) => {
   }
 };
 
+// soft deletes a category
 const deactivateCategory = async (req, res) => {
   try {
     console.log(req);
     const { id } = req.body.id;
     const [result] = await db.query(
-      "UPDATE Categories SET isDeleted = TRUE WHERE id = ?",
+      "UPDATE Categories SET isDeleted = 1 WHERE id = ?",
       [id]
     );
     if (result.affectedRows.length == 0) {
@@ -73,6 +76,7 @@ const deactivateCategory = async (req, res) => {
   }
 };
 
+// allows updates/changes to category name
 const update = async (req, res) => {
   try {
     const { id, name } = req.body;
@@ -106,5 +110,7 @@ const update = async (req, res) => {
     });
   }
 };
+
+//
 
 module.exports = { category, createCategory, deactivateCategory, update };

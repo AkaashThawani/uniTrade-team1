@@ -1,6 +1,6 @@
 const db = require("../db/database");
 
-const createMarketData = async (req, res) => {
+const addMarketData = async (req, res) => {
   const { product_id, timestamp, price, volume } = req.body;
 
   if (!product_id || !timestamp || !price || !volume) {
@@ -10,9 +10,26 @@ const createMarketData = async (req, res) => {
   }
 
   try {
+    // since market data needs to be associated with a product, verify that the product exists
+    const [product] = await db.query(
+      "SELECT id AS product_id FROM Products WHERE id = ?",
+      [product_id]
+    );
+    if (product.length === 0) {
+      return res.status(404).json({
+        error: "Product not found",
+      });
+    }
+    // Postman and MySQL timestamps are imcompatible
+    /* TODO - format dates to make compatible
+    const formattedTimestamp = new Date(timestamp)
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", ""); */
+    const mockTimestamp = "2024-10-23 00:50:48";
     const [result] = await db.query(
       "INSERT INTO MarketData (product_id, timestamp, price, volume) VALUES (?, ?, ?, ?)",
-      [product_id, timestamp, price, volume]
+      [product_id, mockTimestamp, price, volume]
     );
 
     res.status(201).json({
@@ -121,7 +138,7 @@ const getMarketDataById = async (req, res) => {
 };
 
 module.exports = {
-  createMarketData,
+  addMarketData,
   getAllMarketData,
   getMarketDataById,
   updateMarketData,
