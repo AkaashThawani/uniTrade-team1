@@ -1,35 +1,35 @@
 const db = require("../db/database");
 
 const addMarketData = async (req, res) => {
-  const { product_id, timestamp, price, volume } = req.body;
+  const { product_id, best_buy_price, best_sell_price, best_buy_volume, best_sell_volume, type, sold_at } = req.body;
 
-  if (!product_id || !timestamp || !price || !volume) {
+  if (!product_id || best_buy_price === undefined || best_sell_price === undefined || best_buy_volume === undefined || best_sell_volume === undefined || !type) {
     return res.status(400).json({
-      error: "Product ID, timestamp, price, and volume are required",
+      error: "Product ID, best buy price, best sell price, best buy volume, best sell volume, and type are required.",
+    });
+  }
+
+  if (!["buy", "sell"].includes(type)) {
+    return res.status(400).json({
+      error: "Invalid type. Must be either 'buy' or 'sell'.",
     });
   }
 
   try {
-    // since market data needs to be associated with a product, verify that the product exists
-    const [product] = await db.query(
-      "SELECT id AS product_id FROM Products WHERE id = ?",
-      [product_id]
-    );
+    const [product] = await db.query("SELECT product_id FROM Products WHERE product_id = ?", [product_id]);
     if (product.length === 0) {
       return res.status(404).json({
         error: "Product not found",
       });
     }
-    // Postman and MySQL timestamps are imcompatible
-    /* TODO - format dates to make compatible
-    const formattedTimestamp = new Date(timestamp)
-      .toISOString()
-      .slice(0, 19)
-      .replace("T", ""); */
-    const mockTimestamp = "2024-10-23 00:50:48";
+
+    const createdAt = new Date().toISOString().slice(0, 19).replace("T", " ");
+    const formattedSoldAt = sold_at ? new Date(sold_at).toISOString().slice(0, 19).replace("T", " ") : null;
+
     const [result] = await db.query(
-      "INSERT INTO MarketData (product_id, timestamp, price, volume) VALUES (?, ?, ?, ?)",
-      [product_id, mockTimestamp, price, volume]
+      `INSERT INTO MarketData (product_id, best_buy_price, best_sell_price, best_buy_volume, best_sell_volume, type, created_at, sold_at) 
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [product_id, best_buy_price, best_sell_price, best_buy_volume, best_sell_volume, type, createdAt, formattedSoldAt]
     );
 
     res.status(201).json({
@@ -56,9 +56,28 @@ const getAllMarketData = async (req, res) => {
   }
 };
 
+const getMarketDataById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const [rows] = await db.query("SELECT * FROM MarketData WHERE market_id = ?", [id]);
+    if (rows.length === 0) {
+      return res.status(404).json({
+        error: "Market data not found",
+      });
+    }
+    res.status(200).json(rows[0]);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error: "Error occurred when fetching the market data.",
+    });
+  }
+};
+
 const updateMarketData = async (req, res) => {
   const { id } = req.params;
-  const { product_id, timestamp, price, volume } = req.body;
+  const { product_id, best_buy_price, best_sell_price, best_buy_volume, best_sell_volume, type, sold_at } = req.body;
 
   if (!id) {
     return res.status(400).json({
@@ -66,10 +85,26 @@ const updateMarketData = async (req, res) => {
     });
   }
 
+  if (type && !["buy", "sell"].includes(type)) {
+    return res.status(400).json({
+      error: "Invalid type. Must be either 'buy' or 'sell'.",
+    });
+  }
+
   try {
+    const formattedSoldAt = sold_at ? new Date(sold_at).toISOString().slice(0, 19).replace("T", " ") : null;
+
     const [result] = await db.query(
-      "UPDATE MarketData SET product_id = COALESCE(?, product_id), timestamp = COALESCE(?, timestamp), price = COALESCE(?, price), volume = COALESCE(?, volume) WHERE id = ?",
-      [product_id, timestamp, price, volume, id]
+      `UPDATE MarketData 
+       SET product_id = COALESCE(?, product_id), 
+           best_buy_price = COALESCE(?, best_buy_price),
+           best_sell_price = COALESCE(?, best_sell_price),
+           best_buy_volume = COALESCE(?, best_buy_volume),
+           best_sell_volume = COALESCE(?, best_sell_volume),
+           type = COALESCE(?, type),
+           sold_at = COALESCE(?, sold_at)
+       WHERE market_id = ?`,
+      [product_id, best_buy_price, best_sell_price, best_buy_volume, best_sell_volume, type, formattedSoldAt, id]
     );
 
     if (result.affectedRows === 0) {
@@ -93,9 +128,7 @@ const deleteMarketData = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const [result] = await db.query("DELETE FROM MarketData WHERE id = ?", [
-      id,
-    ]);
+    const [result] = await db.query("DELETE FROM MarketData WHERE market_id = ?", [id]);
 
     if (result.affectedRows === 0) {
       return res.status(404).json({
@@ -110,29 +143,6 @@ const deleteMarketData = async (req, res) => {
     console.log(error);
     res.status(500).json({
       error: "Error occurred when deleting market data.",
-    });
-  }
-};
-
-const getMarketDataById = async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const [rows] = await db.query("SELECT * FROM MarketData WHERE id = ?", [
-      id,
-    ]);
-
-    if (rows.length === 0) {
-      return res.status(404).json({
-        error: "Market data not found",
-      });
-    }
-
-    res.status(200).json(rows[0]);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      error: "Error occurred when fetching the market data.",
     });
   }
 };

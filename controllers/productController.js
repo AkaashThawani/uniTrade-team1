@@ -1,18 +1,18 @@
 const db = require("../db/database");
 
 const createProduct = async (req, res) => {
-  const { name, category_id, price, stock_quantity } = req.body;
+  const { product_name, category_id, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6 } = req.body;
 
-  if (!name || !category_id || !price || stock_quantity == 0) {
+  if (!product_name || !category_id || !description || !attribute1 || !attribute2 || !attribute3 || !attribute4 || !attribute5 || !attribute6) {
     return res.status(400).json({
-      error: "Missing required fields",
+      error: "Product name, category ID, description, and all attributes are required.",
     });
   }
 
   try {
     const [result] = await db.query(
-      "INSERT INTO Products (name, category_id, price, stock_quantity) VALUES (?,?,?,?)",
-      [name, category_id, price, stock_quantity]
+      "INSERT INTO Products (product_name, category_id, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      [product_name, category_id, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6]
     );
     res.status(201).json({
       message: "Product created successfully",
@@ -21,19 +21,16 @@ const createProduct = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      error: "Error occurred when adding a new Product",
+      error: "Error occurred when adding a new product.",
     });
   }
 };
 
-// Returns a product using a valid product name
-const product = async (req, res) => {
+const getProductByName = async (req, res) => {
   try {
     const { name } = req.params;
-    const [rows] = await db.query("SELECT * FROM Products WHERE name = ?", [
-      name,
-    ]);
-    if (rows.length == 0) {
+    const [rows] = await db.query("SELECT * FROM Products WHERE product_name = ?", [name]);
+    if (rows.length === 0) {
       return res.status(404).json({
         error: "Product does not exist.",
       });
@@ -51,7 +48,7 @@ const product = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   const { id } = req.params;
-  const { category_id, name, price, stock_quantity } = req.body;
+  const { category_id, product_name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6 } = req.body;
 
   if (!id) {
     return res.status(400).json({
@@ -61,8 +58,18 @@ const updateProduct = async (req, res) => {
 
   try {
     const [result] = await db.query(
-      "UPDATE Products SET category_id = COALESCE(?, category_id), name = COALESCE(?, name), price = COALESCE(?, price), stock_quantity = COALESCE(?, stock_quantity) WHERE id = ?",
-      [category_id, name, price, stock_quantity, id]
+      `UPDATE Products 
+       SET category_id = COALESCE(?, category_id), 
+           product_name = COALESCE(?, product_name), 
+           description = COALESCE(?, description),
+           attribute1 = COALESCE(?, attribute1),
+           attribute2 = COALESCE(?, attribute2),
+           attribute3 = COALESCE(?, attribute3),
+           attribute4 = COALESCE(?, attribute4),
+           attribute5 = COALESCE(?, attribute5),
+           attribute6 = COALESCE(?, attribute6) 
+       WHERE product_id = ?`,
+      [category_id, product_name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6, id]
     );
 
     if (result.affectedRows === 0) {
@@ -77,13 +84,37 @@ const updateProduct = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      error: "Error occurred when updating the Product.",
+      error: "Error occurred when updating the product.",
+    });
+  }
+};
+
+const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const [result] = await db.query("DELETE FROM Products WHERE product_id = ?", [id]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        error: "Product not found",
+      });
+    }
+
+    res.status(200).json({
+      message: "Product deleted successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error: "Error occurred when deleting the product.",
     });
   }
 };
 
 module.exports = {
   createProduct,
-  product,
+  getProductByName,
   updateProduct,
+  deleteProduct,
 };

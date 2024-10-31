@@ -1,8 +1,8 @@
 const db = require("../db/database");
 
-// the name is self explanatory :)
+// Create a new category with attributes
 const createCategory = async (req, res) => {
-  const { name, description } = req.body;
+  const { name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6 } = req.body;
 
   if (!name) {
     return res.status(400).json({
@@ -12,8 +12,8 @@ const createCategory = async (req, res) => {
 
   try {
     const [result] = await db.query(
-      "INSERT INTO Categories (name, description) VALUES (?,?)",
-      [name, description]
+      "INSERT INTO Categories (name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      [name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6]
     );
     res.status(201).json({
       message: "Category created successfully",
@@ -32,14 +32,16 @@ const category = async (req, res) => {
   try {
     const { name } = req.params;
     const [rows] = await db.query(
-      "SELECT * FROM Categories WHERE name = ? AND isDeleted = 0", // prevents soft deleted categories from being returned
+      "SELECT * FROM Categories WHERE name = ? AND isDeleted = 0",
       [name]
     );
-    if (rows.length == 0) {
+
+    if (rows.length === 0) {
       return res.status(404).json({
         error: "Category does not exist.",
       });
     }
+
     res.status(200).json({
       category: rows[0],
     });
@@ -51,20 +53,28 @@ const category = async (req, res) => {
   }
 };
 
-// soft deletes a category
+// Soft deletes a category
 const deactivateCategory = async (req, res) => {
+  const { id } = req.body; // Correctly access the id from the request body
+
+  if (!id) {
+    return res.status(400).json({
+      error: "Category ID is required.",
+    });
+  }
+
   try {
-    console.log(req);
-    const { id } = req.body.id;
     const [result] = await db.query(
       "UPDATE Categories SET isDeleted = 1 WHERE id = ?",
       [id]
     );
-    if (result.affectedRows.length == 0) {
+
+    if (result.affectedRows === 0) {
       return res.status(404).json({
         error: "Category not found.",
       });
     }
+
     res.status(200).json({
       message: "Category marked for deactivation",
     });
@@ -76,30 +86,40 @@ const deactivateCategory = async (req, res) => {
   }
 };
 
-// allows updates/changes to category name
+// Allows updates/changes to category name and attributes
 const update = async (req, res) => {
-  try {
-    const { id, name } = req.body;
+  const { id, name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6 } = req.body;
 
-    //first, we check if the updated name already exists
+  if (!id || !name) {
+    return res.status(400).json({
+      error: "Category ID and name are required.",
+    });
+  }
+
+  try {
+    // First, check if the updated name already exists
     const [categoryExists] = await db.query(
-      "SELECT category WHERE name = ?"[(name, id)]
+      "SELECT * FROM Categories WHERE name = ? AND id != ?",
+      [name, id] // Ensure to exclude the current category by id
     );
 
-    if (categoryExists && categoryExists.length > 0) {
+    if (categoryExists.length > 0) {
       return res.status(400).json({
         error: "Category with this name already exists.",
       });
     }
 
     const [result] = await db.query(
-      "UPDATE Categories SET name = ? WHERE category_id = ?"[(name, id)]
+      "UPDATE Categories SET name = ?, description = ?, attribute1 = ?, attribute2 = ?, attribute3 = ?, attribute4 = ?, attribute5 = ?, attribute6 = ? WHERE id = ?",
+      [name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6, id]
     );
-    if (result.affectedRows.length == 0) {
+
+    if (result.affectedRows === 0) {
       return res.status(404).json({
         error: "Category not found.",
       });
     }
+
     res.status(200).json({
       message: "Category updated successfully.",
     });
@@ -111,6 +131,9 @@ const update = async (req, res) => {
   }
 };
 
-//
-
-module.exports = { category, createCategory, deactivateCategory, update };
+module.exports = {
+  category,
+  createCategory,
+  deactivateCategory,
+  update,
+};
