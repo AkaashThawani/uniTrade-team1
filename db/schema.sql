@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS Categories (
     category_id SERIAL PRIMARY KEY,
     category_name VARCHAR(255) NOT NULL UNIQUE,
+    isDeleted BOOLEAN NOT NULL DEFAULT FALSE,
     attribute1 VARCHAR(255),
     attribute2 VARCHAR(255),
     attribute3 VARCHAR(255),

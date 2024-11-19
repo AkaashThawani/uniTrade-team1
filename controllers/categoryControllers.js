@@ -17,7 +17,7 @@ const createCategory = async (req, res) => {
     );
     res.status(201).json({
       message: "Category created successfully",
-      categoryId: result.rows, // Adjusted to work with PostgreSQL
+      status: "success",
     });
   } catch (error) {
     console.log(error);
@@ -33,7 +33,7 @@ const category = async (req, res) => {
     const { name } = req.params;
     
     const result = await db.query(
-      "SELECT * FROM Categories WHERE category_name = $1", 
+      "SELECT * FROM Categories WHERE category_name = $1 AND isDeleted = 0", 
       [name]
     );
 
