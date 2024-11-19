@@ -33,7 +33,7 @@ const category = async (req, res) => {
     const { name } = req.params;
     
     const result = await db.query(
-      "SELECT * FROM Categories WHERE category_name = $1 AND isDeleted = 0", 
+      "SELECT * FROM Categories WHERE category_name = $1", 
       [name]
     );
 
