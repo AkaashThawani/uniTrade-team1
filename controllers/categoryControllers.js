@@ -12,7 +12,7 @@ const createCategory = async (req, res) => {
 
   try {
     const result = await db.query(
-      "INSERT INTO Categories (category_name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+      "INSERT INTO categories (category_name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
       [name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6]
     );
     res.status(201).json({
@@ -34,7 +34,7 @@ const category = async (req, res) => {
 
     // Fixed the typo in `false` and adjusted query for boolean column
     const result = await db.query(
-      'SELECT * FROM "Categories" WHERE "category_name" = $1 AND "isdeleted" = $2',
+      'SELECT * FROM "categories" WHERE "category_name" = $1 AND "isdeleted" = $2',
       [name, false] // Use a proper boolean value for comparison
     );
 
@@ -67,7 +67,7 @@ const deactivateCategory = async (req, res) => {
 
   try {
     const result = await db.query(
-      "UPDATE Categories SET isdeleted = 1 WHERE id = $1",
+      "UPDATE categories SET isdeleted = 1 WHERE id = $1",
       [id]
     );
 
@@ -101,7 +101,7 @@ const update = async (req, res) => {
   try {
     // First, check if the updated name already exists
     const result = await db.query(
-      "SELECT * FROM Categories WHERE name = $1 AND id != $2",
+      "SELECT * FROM categories WHERE name = $1 AND id != $2",
       [name, id] // Ensure to exclude the current category by id
     );
 
@@ -112,7 +112,7 @@ const update = async (req, res) => {
     }
 
     const updateResult = await db.query(
-      "UPDATE Categories SET name = $1, description = $2, attribute1 = $3, attribute2 = $4, attribute3 = $5, attribute4 = $6, attribute5 = $7, attribute6 = $8 WHERE id = $9",
+      "UPDATE categories SET name = $1, description = $2, attribute1 = $3, attribute2 = $4, attribute3 = $5, attribute4 = $6, attribute5 = $7, attribute6 = $8 WHERE id = $9",
       [name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6, id]
     );
 
