@@ -34,7 +34,7 @@ const category = async (req, res) => {
 
     // Fixed the typo in `false` and adjusted query for boolean column
     const result = await db.query(
-      'SELECT * FROM "Categories" WHERE "category_name" = $1 AND "isDeleted" = $2',
+      'SELECT * FROM "Categories" WHERE "category_name" = $1 AND "isdeleted" = $2',
       [name, false] // Use a proper boolean value for comparison
     );
 
@@ -67,7 +67,7 @@ const deactivateCategory = async (req, res) => {
 
   try {
     const result = await db.query(
-      "UPDATE Categories SET isDeleted = 1 WHERE id = $1",
+      "UPDATE Categories SET isdeleted = 1 WHERE id = $1",
       [id]
     );
 

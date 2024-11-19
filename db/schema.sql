@@ -3,7 +3,7 @@
 CREATE TABLE IF NOT EXISTS Categories (
     category_id SERIAL PRIMARY KEY,
     category_name VARCHAR(255) NOT NULL UNIQUE,
-    isDeleted BOOLEAN NOT NULL DEFAULT FALSE,
+    isdeleted BOOLEAN NOT NULL DEFAULT FALSE,
     attribute1 VARCHAR(255),
     attribute2 VARCHAR(255),
     attribute3 VARCHAR(255),
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS Categories (
     description TEXT
 );
 
-CREATE TABLE IF NOT EXISTS Products (
+CREATE TABLE IF NOT EXISTS products (
     product_id SERIAL PRIMARY KEY,
     product_name VARCHAR(255) NOT NULL UNIQUE,
     category_id INT,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS Products (
         ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS MarketData (
+CREATE TABLE IF NOT EXISTS marketdata (
     market_id SERIAL PRIMARY KEY,
     product_id INT,
     best_buy_price FLOAT,
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS MarketData (
         ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS Users (
+CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS Users (
 );
 
 
-CREATE TABLE IF NOT EXISTS Descriptions (
+CREATE TABLE IF NOT EXISTS descriptions (
     id SERIAL PRIMARY KEY,
     "key" VARCHAR(255) NOT NULL UNIQUE,
     value TEXT
