@@ -1,16 +1,16 @@
 
-// const dotenv = require("dotenv");
-// const { Pool } = require("pg");
+const dotenv = require("dotenv");
+const { Pool } = require("pg");
 
-// dotenv.config();
+dotenv.config();
 
-// const pool = new Pool({
-//     host: process.env.DB_HOST,
-//     user: process.env.DB_USER,
-//     password: process.env.DB_PASSWORD,
-//     database: process.env.DB_NAME,
-//     port: process.env.DB_PORT,
-//     ssl: { rejectUnauthorized: false }, // Required for Render PostgreSQL
-// });
+const pool = new Pool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT,
+    ssl: { rejectUnauthorized: false }, // Required for Render PostgreSQL
+});
 
-// module.exports = pool;
+module.exports = pool;
