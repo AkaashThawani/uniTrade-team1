@@ -8,13 +8,14 @@ console.log("init-db.js is running");
 const schemaPath = path.join(__dirname, 'schema.sql');
 const schema = fs.readFileSync(schemaPath, 'utf-8');
 
-// Directly specify the DATABASE_URL
-const connectionString = 'postgresql://unitrade_user:pU4nYcB6thLOZRF1yrvpoTB1z5nxj7Mm@dpg-csp9019u0jms73bh5c30-a.oregon-postgres.render.com:5432/unitrade';
+// Supabase connection string
+const connectionString = 'postgresql://postgres.luittvqvnpygmcifdtwq:CS673@unitrade@aws-0-us-west-1.pooler.supabase.com:6543/postgres';
 
 const client = new Client({
   connectionString: connectionString,
   ssl: {
-    rejectUnauthorized: true, // Ensure the server's certificate is verified
+    rejectUnauthorized: false, // Ensure SSL is enabled and certificate is verified
+    ca: fs.readFileSync('./prod-ca-2021.crt').toString(), 
   }
 });
 
@@ -47,4 +48,3 @@ client.connect()
     console.error('Failed to connect to PostgreSQL:', err);
     client.end();
   });
-``

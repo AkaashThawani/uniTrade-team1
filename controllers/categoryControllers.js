@@ -11,13 +11,13 @@ const createCategory = async (req, res) => {
   }
 
   try {
-    const [result] = await db.query(
-      "INSERT INTO Categories (name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+    const result = await db.query(
+      "INSERT INTO Categories (category_name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
       [name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6]
     );
     res.status(201).json({
       message: "Category created successfully",
-      categoryId: result.insertId,
+      categoryId: result.rows, // Adjusted to work with PostgreSQL
     });
   } catch (error) {
     console.log(error);
@@ -31,19 +31,20 @@ const createCategory = async (req, res) => {
 const category = async (req, res) => {
   try {
     const { name } = req.params;
-    const [rows] = await db.query(
-      "SELECT * FROM Categories WHERE name = ? AND isDeleted = 0",
+    
+    const result = await db.query(
+      "SELECT * FROM Categories WHERE category_name = $1 AND isDeleted = 0", 
       [name]
     );
 
-    if (rows.length === 0) {
+    if (result.rows.length === 0) {
       return res.status(404).json({
         error: "Category does not exist.",
       });
     }
 
     res.status(200).json({
-      category: rows[0],
+      category: result.rows[0],
     });
   } catch (error) {
     console.log(error);
@@ -55,7 +56,7 @@ const category = async (req, res) => {
 
 // Soft deletes a category
 const deactivateCategory = async (req, res) => {
-  const { id } = req.body; // Correctly access the id from the request body
+  const { id } = req.body;
 
   if (!id) {
     return res.status(400).json({
@@ -64,12 +65,12 @@ const deactivateCategory = async (req, res) => {
   }
 
   try {
-    const [result] = await db.query(
-      "UPDATE Categories SET isDeleted = 1 WHERE id = ?",
+    const result = await db.query(
+      "UPDATE Categories SET isDeleted = 1 WHERE id = $1",
       [id]
     );
 
-    if (result.affectedRows === 0) {
+    if (result.rowCount === 0) {
       return res.status(404).json({
         error: "Category not found.",
       });
@@ -98,23 +99,23 @@ const update = async (req, res) => {
 
   try {
     // First, check if the updated name already exists
-    const [categoryExists] = await db.query(
-      "SELECT * FROM Categories WHERE name = ? AND id != ?",
+    const result = await db.query(
+      "SELECT * FROM Categories WHERE name = $1 AND id != $2",
       [name, id] // Ensure to exclude the current category by id
     );
 
-    if (categoryExists.length > 0) {
+    if (result.rows.length > 0) {
       return res.status(400).json({
         error: "Category with this name already exists.",
       });
     }
 
-    const [result] = await db.query(
-      "UPDATE Categories SET name = ?, description = ?, attribute1 = ?, attribute2 = ?, attribute3 = ?, attribute4 = ?, attribute5 = ?, attribute6 = ? WHERE id = ?",
+    const updateResult = await db.query(
+      "UPDATE Categories SET name = $1, description = $2, attribute1 = $3, attribute2 = $4, attribute3 = $5, attribute4 = $6, attribute5 = $7, attribute6 = $8 WHERE id = $9",
       [name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6, id]
     );
 
-    if (result.affectedRows === 0) {
+    if (updateResult.rowCount === 0) {
       return res.status(404).json({
         error: "Category not found.",
       });

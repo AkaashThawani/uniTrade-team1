@@ -4,7 +4,8 @@
         "CORS": {
             "allowedOrigins": [
                 "http://localhost:4200",
-                "http://localhost:3001"
+                "http://localhost:3001",
+                "*"
             ]
         },
         "bodyParser": {
