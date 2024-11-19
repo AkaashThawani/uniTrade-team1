@@ -1,6 +1,6 @@
 
 
-CREATE TABLE IF NOT EXISTS Categories (
+CREATE TABLE IF NOT EXISTS categories (
     category_id SERIAL PRIMARY KEY,
     category_name VARCHAR(255) NOT NULL UNIQUE,
     isdeleted BOOLEAN NOT NULL DEFAULT FALSE,
