@@ -1,46 +1,50 @@
-const mysql = require('mysql2');
-const dotenv = require('dotenv');
+const { Client } = require('pg');
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
 
-dotenv.config()
-// Adjust schemaPath accordingly if schema.sql is moved from fb folder
+console.log("init-db.js is running");
+
+// Load schema.sql
 const schemaPath = path.join(__dirname, 'schema.sql');
 const schema = fs.readFileSync(schemaPath, 'utf-8');
-//Connect to MySQL db (note that it is initially connecting to dev environment)
-const connection = mysql.createConnection({
-    host: process.env.MYSQL_HOST_DEV,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
+
+// Directly specify the DATABASE_URL
+const connectionString = 'postgresql://unitrade_user:pU4nYcB6thLOZRF1yrvpoTB1z5nxj7Mm@dpg-csp9019u0jms73bh5c30-a.oregon-postgres.render.com:5432/unitrade';
+
+const client = new Client({
+  connectionString: connectionString,
+  ssl: {
+    rejectUnauthorized: true, // Ensure the server's certificate is verified
+  }
 });
 
-console.log("Creating database connection to uniTrade dev")
-connection.query(`CREATE DATABASE IF NOT EXISTS uniTrade_dev`, (err) => {
-    if (err) throw err;
-    console.log('Database uniTrade_dev created successfully');
-  
-    // Execute the schema.sql script
-    connection.changeUser({ database: 'uniTrade_dev' }, (err) => {
-      if (err) throw err;
-      console.log('Switched to database uniTrade_dev.');
-  
-      console.log('Running schema...');
-      // Splitting the schema into individual statements since it seems like mysql package is unable to parse them correctlt
-      const statements = schema.split(';').map(stmt => stmt.trim()).filter(stmt => stmt.length > 0);
-      (async () => {
-        for (const stmt of statements) {
-          try {
-            console.log(`Executing: ${stmt}`);
-            await connection.promise().query(stmt);
-          } catch (err) {
-            console.error('Error executing statement:', stmt);
-            console.error(err);
-            connection.end();
-            return;
-          }
-        }
-        console.log('Schema executed successfully.');
-        connection.end();
-      })();
-    });
+// Connect to PostgreSQL server
+client.connect()
+  .then(async () => {
+    console.log("Connected to PostgreSQL server.");
+
+    console.log('Running schema...');
+    // Split schema into individual statements
+    const statements = schema.split(';').map(stmt => stmt.trim()).filter(stmt => stmt.length > 0);
+
+    // Execute each statement
+    for (const stmt of statements) {
+      try {
+        console.log(`Executing: ${stmt}`);
+        await client.query(stmt);
+      } catch (err) {
+        console.error('Error executing statement:', stmt);
+        console.error(err);
+        await client.end();
+        return;
+      }
+    }
+
+    console.log('Schema executed successfully.');
+    await client.end();
+  })
+  .catch(err => {
+    console.error('Failed to connect to PostgreSQL:', err);
+    client.end();
   });
+``

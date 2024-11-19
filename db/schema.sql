@@ -1,6 +1,5 @@
-
 CREATE TABLE IF NOT EXISTS Categories (
-    category_id INT PRIMARY KEY AUTO_INCREMENT,
+    category_id SERIAL PRIMARY KEY,
     category_name VARCHAR(255) NOT NULL UNIQUE,
     attribute1 VARCHAR(255),
     attribute2 VARCHAR(255),
@@ -12,7 +11,7 @@ CREATE TABLE IF NOT EXISTS Categories (
 );
 
 CREATE TABLE IF NOT EXISTS Products (
-    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_id SERIAL PRIMARY KEY,
     product_name VARCHAR(255) NOT NULL UNIQUE,
     category_id INT,
     description TEXT,
@@ -23,41 +22,40 @@ CREATE TABLE IF NOT EXISTS Products (
     attribute5 VARCHAR(255),
     attribute6 VARCHAR(255),
     status BOOLEAN NOT NULL DEFAULT TRUE,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
         ON DELETE SET NULL
         ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS MarketData (
-    market_id INT PRIMARY KEY AUTO_INCREMENT,
+    market_id SERIAL PRIMARY KEY,
+    product_id INT,
     best_buy_price FLOAT,
     best_sell_price FLOAT,
     best_buy_volume INT,
     best_sell_volume INT,
-    type ENUM('buy', 'sell') NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    sold_at DATETIME,
+    type VARCHAR(4) CHECK (type IN ('buy', 'sell')) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    sold_at TIMESTAMP,
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
-
--- CREATE TABLE IF NOT EXISTS Users(
---     id INT PRIMARY KEY AUTO_INCREMENT,
---     username VARCHAR(255) NOT NULL UNIQUE,
---     password VARCHAR(255) NOT NULL,
---     email VARCHAR(255) NOT NULL UNIQUE,
---     role ENUM('admin', 'user') NOT NULL DEFAULT 'admin',
---     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
---     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
--- )
-
-CREATE TABLE IF NOT EXISTS Descriptions (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    key VARCHAR(255) NOT NULL UNIQUE,
-    value TEXT
+CREATE TABLE IF NOT EXISTS Users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    role VARCHAR(5) CHECK (role IN ('admin', 'user')) NOT NULL DEFAULT 'admin',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
+CREATE TABLE IF NOT EXISTS Descriptions (
+    id SERIAL PRIMARY KEY,
+    "key" VARCHAR(255) NOT NULL UNIQUE,
+    value TEXT
+);

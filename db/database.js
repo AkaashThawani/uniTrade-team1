@@ -1,7 +1,7 @@
-//manages connection pools
-const dotenv = require("dotenv");
-dotenv.config();
-const mysql = require('mysql2');
+// //manages connection pools
+// const dotenv = require("dotenv");
+// dotenv.config();
+// const mysql = require('mysql2');
 
 // const pool = mysql.createPool({
 //     host: process.env.MYSQL_HOST_DEV,
@@ -14,12 +14,20 @@ const mysql = require('mysql2');
 //     queueLimit: 0
 // })
 
-const pool = mysql.createPool({
-    host:'127.0.0.1',
-    user:'root',
-    password:'',
-    database:'SDPM',
-    port:3306,
-})
+// module.exports = pool.promise()
 
-module.exports = pool.promise()
+const dotenv = require("dotenv");
+const { Pool } = require("pg");
+
+dotenv.config();
+
+const pool = new Pool({
+    host: process.env.DB_HOST || '127.0.0.1',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || 'uniTrade_dev',
+    port: process.env.DB_PORT || 5432,
+    ssl: { rejectUnauthorized: false }, // Required for Render PostgreSQL
+});
+
+module.exports = pool;

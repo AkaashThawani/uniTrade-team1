@@ -1,5 +1,6 @@
 const express = require("express");
 //const routes = require("./routes/index");
+const db = require("./db/init-db");
 const categoryRoutes = require("./routes/categoryRoutes");
 const productRoutes = require("./routes/productRoutes");
 const marketDataRoutes = require("./routes/marketDataRoutes");

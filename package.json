@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev":"nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "author": "Hannan Desai",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "express": "^4.21.0",
     "helmet": "^8.0.0",
     "mysql2": "^3.11.3",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "pg": "^8.13.1"
   }
 }
