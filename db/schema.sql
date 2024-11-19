@@ -1,3 +1,5 @@
+
+
 CREATE TABLE IF NOT EXISTS Categories (
     category_id SERIAL PRIMARY KEY,
     category_name VARCHAR(255) NOT NULL UNIQUE,
@@ -60,3 +62,4 @@ CREATE TABLE IF NOT EXISTS Descriptions (
     "key" VARCHAR(255) NOT NULL UNIQUE,
     value TEXT
 );
+

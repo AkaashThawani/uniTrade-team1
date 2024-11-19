@@ -31,10 +31,11 @@ const createCategory = async (req, res) => {
 const category = async (req, res) => {
   try {
     const { name } = req.params;
-    
+
+    // Fixed the typo in `false` and adjusted query for boolean column
     const result = await db.query(
-      "SELECT * FROM Categories WHERE category_name = $1 AND isDeleted = 0", 
-      [name]
+      'SELECT * FROM "Categories" WHERE "category_name" = $1 AND "isDeleted" = $2',
+      [name, false] // Use a proper boolean value for comparison
     );
 
     if (result.rows.length === 0) {
