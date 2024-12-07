@@ -34,7 +34,7 @@ const category = async (req, res) => {
 
     // Fixed the typo in `false` and adjusted query for boolean column
     const result = await db.query(
-      'SELECT * FROM "categories" WHERE "category_name" = $1 AND "isdeleted" = $2',
+      'SELECT * FROM "product_categor" WHERE "category_name" = $1 AND "isdeleted" = $2',
       [name, false] // Use a proper boolean value for comparison
     );
 
