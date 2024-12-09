@@ -1,5 +1,32 @@
 const db = require("../db/database");
 
+// Get all active categories
+const activeCategories = async (req, res) => {
+  try {
+    const result = await db.query(
+      'SELECT * FROM categories WHERE status = $1', 
+      ['active'] // Assuming 'active' represents the active status value
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({
+        message: "No active categories found.",
+      });
+    }
+
+    res.status(200).json({
+      categories: result.rows,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "An error occurred while retrieving active categories.",
+    });
+  }
+};
+
+
+
 // Create a new category with attributes
 const createCategory = async (req, res) => {
   const { name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6 } = req.body;
@@ -67,7 +94,7 @@ const deactivateCategory = async (req, res) => {
 
   try {
     const result = await db.query(
-      "UPDATE categories SET isdeleted = 1 WHERE id = $1",
+      "UPDATE categories SET status = 1 WHERE id = $1",
       [id]
     );
 
@@ -133,7 +160,10 @@ const update = async (req, res) => {
   }
 };
 
+
+
 module.exports = {
+  activeCategories,
   category,
   createCategory,
   deactivateCategory,

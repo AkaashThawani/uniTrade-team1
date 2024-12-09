@@ -9,10 +9,10 @@ const {
 
 const router = express.Router();
 
-router.post("/market-data", addMarketData);
-router.get("/market-data/:id", getMarketDataById);
-router.get("/market-data", getAllMarketData);
-router.put("/market-data/:id", updateMarketData);
-router.delete("/market-data/:id", deleteMarketData);
+router.post("/marketData", addMarketData);
+router.get("/marketData/:id", getMarketDataById);
+router.get("/allMarketData", getAllMarketData);
+router.put("/marketData/:id", updateMarketData);
+router.delete("/marketData/:id", deleteMarketData);
 
 module.exports = router;
