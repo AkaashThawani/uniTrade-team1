@@ -12,7 +12,7 @@ const middlewares = require("./middlewares/index");
 const app = express();
 app.use(express.json());
 // setup middlewares
-//middlewares(app);
+middlewares(app);
 
 // setup routes
 //routes(app);

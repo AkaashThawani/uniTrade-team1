@@ -1,11 +1,27 @@
 const db = require("../db/database");
 
 // Get all active categories
+const formatCategory = (category) => {
+  return {
+    id: category.category_id,
+    categoryName: category.category_name,
+    attributes: {
+      attribute1: category.attribute1,
+      attribute2: category.attribute2,
+      attribute3: category.attribute3,
+      attribute4: category.attribute4,
+    },
+    description: category.description,
+    status: category.status === 'A' ? 'Active' : 'Inactive', // Adjust the status representation
+  };
+};
+
+// Get active categories
 const activeCategories = async (req, res) => {
   try {
     const result = await db.query(
-      'SELECT * FROM categories WHERE status = $1', 
-      ['active'] // Assuming 'active' represents the active status value
+      'SELECT * FROM product_category WHERE status = $1',
+      ['A'] // Assuming 'A' represents the active status
     );
 
     if (result.rows.length === 0) {
@@ -14,8 +30,10 @@ const activeCategories = async (req, res) => {
       });
     }
 
+    const formattedCategories = result.rows.map(formatCategory);
+
     res.status(200).json({
-      categories: result.rows,
+      categories: formattedCategories,
     });
   } catch (error) {
     console.error(error);
@@ -25,11 +43,35 @@ const activeCategories = async (req, res) => {
   }
 };
 
+// Get all categories
+const allCategories = async (req, res) => {
+  try {
+    const result = await db.query('SELECT * FROM product_category');
+    if (result.rows.length === 0) {
+      return res.status(404).json({
+        message: "No categories found.",
+      });
+    }
+
+    const formattedCategories = result.rows.map(formatCategory);
+
+    res.status(200).json({
+      categories: formattedCategories,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "An error occurred while retrieving categories.",
+    });
+  }
+};
+
+
 
 
 // Create a new category with attributes
 const createCategory = async (req, res) => {
-  const { name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6 } = req.body;
+  const { name, description, attribute1, attribute2, attribute3, attribute4, status } = req.body;
 
   if (!name) {
     return res.status(400).json({
@@ -37,22 +79,38 @@ const createCategory = async (req, res) => {
     });
   }
 
+
   try {
-    const result = await db.query(
-      "INSERT INTO categories (category_name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
-      [name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6]
+    // Check if the category name already exists
+    const existingCategory = await db.query(
+      "SELECT * FROM product_category WHERE LOWER(category_name) = $1",
+      [name]
     );
+
+    if (existingCategory.rows.length > 0) {
+      return res.status(409).json({
+        error: `Category with name '${name}' already exists.`,
+      });
+    }
+
+    // Insert the new category
+    await db.query(
+      "INSERT INTO product_category (category_name, description, attribute1, attribute2, attribute3, attribute4, status) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+      [name, description, attribute1, attribute2, attribute3, attribute4, status]
+    );
+
     res.status(201).json({
       message: "Category created successfully",
       status: "success",
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).json({
       error: "Error occurred when creating a Category.",
     });
   }
 };
+
 
 // Returns a category using a valid category name
 const category = async (req, res) => {
@@ -61,8 +119,8 @@ const category = async (req, res) => {
 
     // Fixed the typo in `false` and adjusted query for boolean column
     const result = await db.query(
-      'SELECT * FROM "product_categor" WHERE "category_name" = $1 AND "isdeleted" = $2',
-      [name, false] // Use a proper boolean value for comparison
+      'SELECT * FROM "product_category" WHERE "category_name" = $1 AND "status" = $2',
+      [name, 'A'] // Use a proper boolean value for comparison
     );
 
     if (result.rows.length === 0) {
@@ -94,8 +152,8 @@ const deactivateCategory = async (req, res) => {
 
   try {
     const result = await db.query(
-      "UPDATE categories SET status = 1 WHERE id = $1",
-      [id]
+      "UPDATE product_category SET status = $1 WHERE id = $1",
+      ['I', id]
     );
 
     if (result.rowCount === 0) {
@@ -116,9 +174,9 @@ const deactivateCategory = async (req, res) => {
 };
 
 // Allows updates/changes to category name and attributes
-const update = async (req, res) => {
-  const { id, name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6 } = req.body;
-
+const updateCategory = async (req, res) => {
+  const { id, name, discription, attribute1, attribute2, attribute3, attribute4, status } = req.body;
+  console.log(req.body);
   if (!id || !name) {
     return res.status(400).json({
       error: "Category ID and name are required.",
@@ -128,7 +186,7 @@ const update = async (req, res) => {
   try {
     // First, check if the updated name already exists
     const result = await db.query(
-      "SELECT * FROM categories WHERE name = $1 AND id != $2",
+      "SELECT * FROM product_category WHERE category_name = $1 AND category_id != $2",
       [name, id] // Ensure to exclude the current category by id
     );
 
@@ -139,8 +197,8 @@ const update = async (req, res) => {
     }
 
     const updateResult = await db.query(
-      "UPDATE categories SET name = $1, description = $2, attribute1 = $3, attribute2 = $4, attribute3 = $5, attribute4 = $6, attribute5 = $7, attribute6 = $8 WHERE id = $9",
-      [name, description, attribute1, attribute2, attribute3, attribute4, attribute5, attribute6, id]
+      "UPDATE product_category SET category_name = $1, description = $2, attribute1 = $3, attribute2 = $4, attribute3 = $5, attribute4 = $6 , status = $7 WHERE category_id = $8",
+      [name, discription, attribute1, attribute2, attribute3, attribute4, status, id]
     );
 
     if (updateResult.rowCount === 0) {
@@ -167,5 +225,6 @@ module.exports = {
   category,
   createCategory,
   deactivateCategory,
-  update,
+  updateCategory,
+  allCategories
 };

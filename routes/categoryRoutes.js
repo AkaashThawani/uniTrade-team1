@@ -2,9 +2,10 @@ const express = require("express");
 const {
   createCategory,
   category,
-  update,
   deactivateCategory,
   activeCategories,
+  allCategories,
+  updateCategory,
 } = require("../controllers/categoryControllers");
 
 const router = express.Router();
@@ -12,7 +13,8 @@ const router = express.Router();
 router.post("/categories", createCategory);
 router.get("/category/:name", category);
 router.put("/deactivateCategory/:category_id", deactivateCategory);
-router.put("/category/:id", update);
+router.post("/category/:id", updateCategory);
 router.get("/categoriesList", activeCategories);
+router.get("/allCategories", allCategories);
 
 module.exports = router;
