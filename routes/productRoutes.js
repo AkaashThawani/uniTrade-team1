@@ -7,7 +7,8 @@ const {
   getAllProducts,
   getActiveProducts,
   getProductsWithCategory,
-  getProductCategoryWise,// Import the new API
+  getProductCategoryWise,
+  getRecentCategories// Import the new API
 } = require("../controllers/productController");
 
 const router = express.Router();
@@ -22,5 +23,6 @@ router.get("/products", getAllProducts);
 router.get("/activeProduct", getActiveProducts);
 router.get("/productWithCategory", getProductsWithCategory);
 router.get("/productCategoryWise", getProductCategoryWise); // Add this route
+router.get("/recentCategories", getRecentCategories); // Add this route
 
 module.exports = router;

@@ -47,7 +47,7 @@ const addMarketData = async (req, res) => {
 const getAllMarketData = async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM vw_live_market_data");
-    console.log(result);
+    // console.log(result);
     res.status(200).json(result.rows);
   } catch (error) {
     console.log(error);

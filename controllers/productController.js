@@ -184,6 +184,44 @@ const getActiveProducts = async (req, res) => {
   }
 };
 
+const getRecentCategories = async (req, res) => {
+  try {
+    const result = await db.query(`
+      WITH RankedProducts AS (
+        SELECT 
+          p.category_id,  -- Explicitly reference category_id from the product table
+          ROW_NUMBER() OVER (PARTITION BY p.category_id ORDER BY p.created_at DESC) AS rank,
+          p.created_at, -- Explicitly reference created_at from the product table
+          c.category_name -- Explicitly reference category_name from the product_category table
+        FROM product p
+        JOIN product_category c ON p.category_id = c.category_id
+      )
+      SELECT DISTINCT rp.category_name, rp.created_at
+      FROM RankedProducts rp
+      WHERE rp.rank = 1
+      ORDER BY rp.created_at DESC  -- Order by created_at
+      LIMIT 5;
+    `);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({
+        message: "No recent categories found."
+      });
+    }
+
+    const categories = result.rows.map(row => row.category_name);
+
+    res.status(200).json({
+      categories
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "An error occurred while retrieving recent categories."
+    });
+  }
+};
+
 const formatProduct = (product) => {
   return {
     id: product.product_id,
@@ -355,5 +393,6 @@ module.exports = {
   getAllProducts,
   getActiveProducts,
   getProductsWithCategory,
-  getProductCategoryWise
+  getProductCategoryWise,
+  getRecentCategories
 };
