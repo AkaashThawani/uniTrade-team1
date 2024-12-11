@@ -77,7 +77,7 @@ const updateProduct = async (req, res) => {
   try {
     // Check if category exists and is active
     category_id = category
-    
+
     const categoryResult = await db.query('SELECT * FROM product_category WHERE category_id = $1 AND status = $2', [category_id, 'A']);
     if (categoryResult.rows.length === 0) {
       return res.status(404).json({
@@ -271,6 +271,82 @@ const getProductsWithCategory = async (req, res) => {
   }
 };
 
+const getProductCategoryWise = async (req, res) => {
+  try {
+    const result = await db.query(`
+      SELECT 
+        c.category_id, 
+        c.category_name,
+        c.attribute1, 
+        c.attribute2, 
+        c.attribute3, 
+        c.attribute4,
+        p.product_id, 
+        p.product_name, 
+        p.description, 
+        p.attribute1 AS product_attribute1_value, 
+        p.attribute2 AS product_attribute2_value, 
+        p.attribute3 AS product_attribute3_value, 
+        p.attribute4 AS product_attribute4_value, 
+        p.status
+      FROM product_category c
+      LEFT JOIN product p ON c.category_id = p.category_id
+    `);
+
+    const rows = result.rows;
+
+    if (rows.length === 0) {
+      return res.status(404).json({
+        message: "No products or categories found.",
+      });
+    }
+
+    // Group products by category
+    const categoryWiseProducts = rows.reduce((acc, row) => {
+      if (!acc[row.category_id]) {
+        acc[row.category_id] = {
+          id: row.category_id,
+          name: row.category_name,
+          attributeKeys: {
+            attribute1: row.attribute1,
+            attribute2: row.attribute2,
+            attribute3: row.attribute3,
+            attribute4: row.attribute4,
+          },
+          products: [],
+        };
+      }
+
+      // If a product exists for the category, add it to the products array
+      if (row.product_id) {
+        acc[row.category_id].products.push({
+          id: row.product_id,
+          name: row.product_name,
+          description: row.description,
+          attributes: {
+            [acc[row.category_id].attributeKeys.attribute1]: row.product_attribute1_value,
+            [acc[row.category_id].attributeKeys.attribute2]: row.product_attribute2_value,
+            [acc[row.category_id].attributeKeys.attribute3]: row.product_attribute3_value,
+            [acc[row.category_id].attributeKeys.attribute4]: row.product_attribute4_value,
+          },
+          status: row.status === "A" ? "Active" : "Inactive",
+        });
+      }
+
+      return acc;
+    }, {});
+
+    res.status(200).json({
+      categories: Object.values(categoryWiseProducts),
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "An error occurred while retrieving category-wise products.",
+    });
+  }
+};
+
 module.exports = {
   createProduct,
   getProductByName,
@@ -279,4 +355,5 @@ module.exports = {
   getAllProducts,
   getActiveProducts,
   getProductsWithCategory,
+  getProductCategoryWise
 };

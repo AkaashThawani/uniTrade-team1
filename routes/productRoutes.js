@@ -6,7 +6,8 @@ const {
   deleteProduct,
   getAllProducts,
   getActiveProducts,
-  getProductsWithCategory,  // Import the new API
+  getProductsWithCategory,
+  getProductCategoryWise,// Import the new API
 } = require("../controllers/productController");
 
 const router = express.Router();
@@ -19,6 +20,7 @@ router.delete("/product/:id", deleteProduct);  // Use DELETE for deleting a prod
 
 router.get("/products", getAllProducts);
 router.get("/activeProduct", getActiveProducts);
-router.get("/productWithCategory", getProductsWithCategory);  // New route for getting products with category
+router.get("/productWithCategory", getProductsWithCategory);
+router.get("/productCategoryWise", getProductCategoryWise); // Add this route
 
 module.exports = router;
