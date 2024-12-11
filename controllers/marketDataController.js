@@ -73,7 +73,7 @@ const getHistoricMarketDataRange = async (req, res) => {
   try {
     // Use parameterized queries to pass start_date and end_date to the SQL query
     const result = await db.query(
-      `SELECT * FROM public.vw_Historical_market_data
+      `SELECT * FROM public.vw_live_market_data
        WHERE trade_date BETWEEN $1 AND $2`,
       [start_date, end_date]
     );
