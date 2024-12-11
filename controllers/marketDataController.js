@@ -44,15 +44,46 @@ const addMarketData = async (req, res) => {
   }
 };
 
-const getAllMarketData = async (req, res) => {
+const getLiveMarketData = async (req, res) => {
   try {
-    const result = await db.query("SELECT * FROM vw_live_market_data");
-    // console.log(result);
+    // Fetch live market data for today (using CURRENT_DATE for today's data)
+    const result = await db.query(
+      "SELECT * FROM public.vw_live_market_data WHERE trade_date = CURRENT_DATE"
+    );
     res.status(200).json(result.rows);
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      error: "Error occurred when fetching market data.",
+      error: "Error occurred when fetching live market data.",
+    });
+  }
+};
+
+const getHistoricMarketDataRange = async (req, res) => {
+  // Extract start_date and end_date from query parameters
+  const { start_date, end_date } = req.query;
+
+  // Check if the dates are valid
+  if (!start_date || !end_date) {
+    return res.status(400).json({
+      error: "Please provide both start_date and end_date.",
+    });
+  }
+
+  try {
+    // Use parameterized queries to pass start_date and end_date to the SQL query
+    const result = await db.query(
+      `SELECT * FROM public.vw_Historical_market_data
+       WHERE trade_date BETWEEN $1 AND $2`,
+      [start_date, end_date]
+    );
+
+    // Return the result
+    res.status(200).json(result.rows);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error: "Error occurred when fetching historic market data.",
     });
   }
 };
@@ -150,8 +181,9 @@ const deleteMarketData = async (req, res) => {
 
 module.exports = {
   addMarketData,
-  getAllMarketData,
+  getLiveMarketData,
   getMarketDataById,
   updateMarketData,
   deleteMarketData,
+  getHistoricMarketDataRange,
 };
