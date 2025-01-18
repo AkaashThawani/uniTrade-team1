@@ -1,7 +1,6 @@
 const express = require("express");
 const {
   addMarketData,
-  getAllMarketData,
   getMarketDataById,
   updateMarketData,
   deleteMarketData,

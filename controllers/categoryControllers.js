@@ -66,9 +66,6 @@ const allCategories = async (req, res) => {
   }
 };
 
-
-
-
 // Create a new category with attributes
 const createCategory = async (req, res) => {
   const { name, description, attribute1, attribute2, attribute3, attribute4, status } = req.body;
